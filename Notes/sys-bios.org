@@ -1,0 +1,422 @@
+#+STARTUP: showeverything
+#+STARTUP: indent
+
+
+* SYS/BIOS
+
+
+** IWR1642 笔记
+
+**** Terminology 术语：
+- MSS :: Master Subsystem
+- DSS :: DSP Subsystem
+- BSS :: RADAR Subsystem
+- MCB :: Master Control Block
+- Control Path :: 指使用 mmWave API(mmWaveLink+Mailbox driver)实现对 BSS_Firmware 的控制，即：Radar Control --> mmWave Front End
+- Data Path :: 从雷达射频前段开始数据的处理流程
+
+**** cheat-sheet
+- pingpong :: 一种缓存手段，使用多个低速的数据预处理模块处理高速的输入数据流。这样做可以提高系统的数据吞吐量
+
+
+**** MIMO Radar 调制方式
+- TDM-MIMO: 简单，但是不能充分利用设备的发送能力
+- BPM-MIMO: 使用 BPM 进行时域编码，连续发送。增大了总的发射功率，因此 SNR 变好 10log10(N_{TX})，对于 N=2，S_{1} = (S_{a} + S_{b})/2, S_{2} = (S_{a}-S_{b})/2；对于 N=4 的情况， 使用 4x4 的 Hadamard 矩阵进行解码。相比 TDM-MIMO，处理流程多了解码块(decoding block)。
+
+
+**** TX 信号配置
+三个概念：
+- Profile :: 包含多个与 Chirp 发送与接收有关的参数的模板。包括 TX 参数比如: 起始频率，斜率，持续时间以及空闲时间(idle time)；接收参数比如: ADC 采样时间。至多可以定义和保存 *4* 个不同的 Profile
+- Chirp :: 每个 Chirp 的类型与一个特定的 Profile 相关联并且继承该 Profile 的所有属性。额外的与每个 Chirp 相关联的参数包括用来发送的 *天线* 以及应用的二进制相角 *调制* 方式。最多可以定义 *512* 个不同的 Chirp 类型(每个 Chirp 类型与上述四个预定义的 Profile 类型之一相关联)。
+- Frame :: Frame 由预定义的 Chirp 类型的 *序列* 构成。也可以是由不同 *帧* 构成的序列，每帧由不同 chirp 类型的 Chirp 序列构成。
+
+
+*** startup
+（这里有个图片）
+
+
+
+
+
+
+*** Software Tasks on MSS
+| Task's Name             | Functionality                                                                                                                                           |
+|-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| MmwDemo_mssInitTask     | 一次性初始化任务                                                                                                                                        |
+| MmwDemo_mmWaveCtrlTask  | 为 mmWave 控制提供执行的上下文，无限循环执行 MMWave_execute 接口函数                                                                                    |
+| MmwDemo_mssCtrlPathTask | 处理来自 CLI_Task 的 data path events 或者 EVM 上的 SOC_XWR16XX_GPIO_1 按钮，并将 start/stop 完成事件反馈给 CLI_Task                                    |
+| CLI_task                | 接收用户命令以及发送事件给 MmwDemo_mssCtrlPathTask，对于 start/stop 命令，等待来自 MmwDemo_mssCtrlPathTask 的完成事件；若成功则点亮 SOC_XWR16XX_GPIO_2. |
+| MmwDemo_mboxReadTask    | 　处理从信箱接收到来自 DSS 的信息                                                                                                                       |
+|                         |                                                                                                                                                         |
+
+
+
+*** Software Task on DSS
+| Task's Name               | Functionality                   |
+|---------------------------+---------------------------------|
+| MmwDemo_dssInitTask       |                                 |
+| MmwDemo_mboxReadTask      | 处理从信箱接收到的来自 MSS 的信息 |
+| MmwDemo_dssMMWaveCtrlTask | 为 mmWave control 提供执行的上下文，在无限循环中执行 MMWave_execute 接口函数 |
+| MmwDemo_dssDataPathTask   |                                 |
+
+
+
+
+*** 一些初始化
+|          |                                                                                                                                                                                     |
+|----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Soc_init | initialize and setup the SOC Driver. If the system clock configuration is initialized then the function will unhalt the BSS and will wait until the APLL calibiration is completed. |
+
+
+*** ADC buffer
+ping-pong 机制 双缓冲，The ADC buffer is implemented as a double buffering (ping-pong) mechanism that allows for one buffer to
+be written to (filled) while the other one is being read out (emptied).
+
+The size of the ADC buffer is:
+    - 16 KB for each ping and pong buffers on AWR12xx and AWR14xx devices
+    - 32 KB for each ping and pong buffers on AWR16xx
+
+
+*** FFT
+| Name            |                                |
+|-----------------+--------------------------------|
+| 1D-Range-FFT    | 一个 Chirp 一个天线的 256 个采样点 |
+| 2D-Velosity-FFT | 同一个 frame 不同 Chirp 同一个天线之间 |
+| 3D-Angle-FFT    | 相同 Chirp 不同天线之间          |
+
+
+*** Mainlbox
+信箱用于两个处理器之间 *异步地* 交换信息，每个处理器拥有 MailBox 内存空间以及寄存器(用于其他处理器与之通信)，每个处理器有 *两套* mailbox 内存空间和寄存器用于供其他处理器与之通信[fn:ref]。
+Message from sender to receiver:
+1. *SENDER* writes the message in the *RECEIVER* mailbox *RECEIVER_MBOX4SENDER*
+2. *SENDER* triggers an interupt to *RECEIVER* by writing 1 to *RECEIVER_MBOX4SENDER_REG_INT_TRIG[0]*. This generate a mailbox-level interupt to *RECEIVER*
+3. *RECEIVER* clear the interupt by writing 1 to *RECEIVER_MBOX4SENDER_REG_INT_ACK[0]*.
+4. *RECEIVER* read message from the mailbox
+5. *RECEIVER* triggers an interupt to *SENDER* indicating the mailbox is read, by writing 1 to *SENDER_MBOX4RECEIVER_REG_INT_TRIG[1]*.
+6. *SENDER* clear the interupt by writing 1 to *SENDER_MBOX4RECEIVER_REG_INT_ACK[1]*
+
+MailBox Message Example( Message from MSS to DSS):
+1) *MSS* writes the message in the *DSS* mailbox (*DSS_MBOX4MSS*)
+2) *MSS* triggers an interupt to *DSS* by writing 1 to *DSS_MBOX4MSS_REG_INT_TRIG[0]*. This generates a mailbox-level interupt to DSS.
+3) *DSS* clears the interupt by writing 1 to *DSS_MBOX4MSS_REG_INT_ACK[0]*
+4) *DSS* reads the message from the mailbox
+5) *DSS* triggers the interupt to indicating the mailbox is read, by writing 1 to *MSS_MBOX4DSS_REG_INT_TRIG[1]*
+6) *MSS* clears the interupt by writing 1 to *MSS_MBOX4DSS_REG_INT_ACK[1]*
+
+MailBox Message Example( Message from DSS to MSS):
+1) *DSS* writes the message in the *MSS* mailbox (*MSS_MBOX4DSS*)
+2) *DSS* triggers an interupt to *DSS* by writing 1 to *MSS_MBOX4DSS_REG_INT_TRIG[0]*. This generates a mailbox-level interupt to DSS.
+3) *MSS* clears the interupt by writing 1 to *MSS_MBOX4DSS_REG_INT_ACK[0]*
+4) *MSS* reads the message from the mailbox
+5) *MSS* triggers the interupt to indicating the mailbox is read, by writing 1 to *DSS_MBOX4MSS_REG_INT_TRIG[1]*
+6) *MSS* clears the interupt by writing 1 to *DSS_MBOX4MSS_REG_INT_ACK[1]*
+
+[fn:ref] swru552b_IWR16xx_14xx Industrial Radar Family Technical Reference Manual (Rev. B).pdf
+
+
+*** Programmer view of DSP Subsystem
+1. user *handshake RAM* share data between MSS and DSS, store final target list
+2. ADC buffer: digitilized IF signal ADC data from digital front-end
+3. L3 buffer: Primarily store radar-cubed data
+
+*** Main Datastructure
+#+BEGIN_SRC c
+/**
+ * @brief
+ *  Millimeter Wave Demo MCB
+ *
+ * @details
+ *  The structure is used to hold all the relevant information for the
+ *  Millimeter Wave demo
+ */
+typedef struct MmwDemo_MCB_t
+{
+    /*! @brief   Configuration which is used to execute the demo */
+    MmwDemo_Cfg                 cfg;
+/*! * @brief   Handle to the SOC Module */ SOC_Handle                  socHandle;
+
+    /*! @brief   UART Logging Handle */
+    UART_Handle                 loggingUartHandle;
+
+    /*! @brief   UART Command Rx/Tx Handle */
+    UART_Handle                 commandUartHandle;
+
+    /*! @brief   This is the mmWave control handle which is used
+     * to configure the BSS. */
+    MMWave_Handle               ctrlHandle;
+
+   // f
+   // Mailbox_Handle              peerMailbox;
+    Mbox_Handle              peerMailbox;
+    /*! @brief   Semaphore handle for the mailbox communication */
+    Semaphore_Handle            mboxSemHandle;
+
+
+    /*! @brief   Semaphore handle for the application task */
+    Semaphore_Handle                    appSemHandle;
+
+    /*! @brief   Point Cloud */
+    MmwDemo_output_message_pointCloud   *pointCloud;
+
+    /*! @brief   Target Descriptors */
+    MmwDemo_targetDescrHandle   *targetDescrHandle;
+
+    /*! @brief   Tracker Handle */
+    void     					        *gtrackHandle;
+
+    /*! @brief   MSS system event handle */
+    Event_Handle                eventHandle;
+
+    /*! @brief   Handle to the SOC chirp interrupt listener Handle */
+    SOC_SysIntListenerHandle    chirpIntHandle;
+
+    /*! @brief   Handle to the SOC frame start interrupt listener Handle */
+    SOC_SysIntListenerHandle    frameStartIntHandle;
+
+    /*! @brief   Data Path object: currently only for receiving data from DSS. Potentially adding other block such as tracking here*/
+    MmwDemo_MSS_DataPathObj     mssDataPathObj;
+
+    /*! @brief   Has the mmWave module been opened? */
+    bool                        isMMWaveOpen;
+
+    /*! @brief   mmw Demo stats */
+    MmwDemo_MSS_STATS           stats;
+} MmwDemo_MCB;
+
+#+END_SRC
+
+*** Task_Params 结构体
+#+BEGIN_SRC c
+typedef struct Task_Params {
+// Instance config-params structure
+    IInstance_Params *instance;
+    // Common per-instance configs
+    UInt affinity;
+    // The core which this task is to run on. Default is Task_AFFINITY_NONE
+    UArg arg0;
+    // Task function argument. Default is 0
+    UArg arg1;
+    // Task function argument. Default is 0
+    Ptr env;
+    // Environment data struct
+    Int priority;
+    // Task priority (0 to Task.numPriorities-1, or -1). Default is 1
+    Ptr stack;
+    // Task stack pointer. Default = null
+    IHeap_Handle stackHeap;
+    // Mem heap used for dynamically created task stack
+    SizeT stackSize;
+    // Task stack size in MAUs
+    Bool vitalTaskFlag;
+    // Exit system immediately when the last task with this flag set to TRUE has terminated
+} Task_Params;
+#+END_SRC
+
+** Data Path
+*** 概览
+1. Processing during chirps
+   - 1D(range)-FFT that takes input from multile tx from *ADC buffer*
+   - transfer output into *L3 RAM* by EDMA
+2. Processing during time between the end of chirps until the beggening of the next chirping period
+   - 2D(velosity)-FFT that read input from 1D output in L3RAM in a transpose manner(using EDMA) and perform FFT to give a (range,velosity) matrix in the RAM. the process also includes the *CFAR* detection in Doppler direction.
+   - CFAR detection in range direction using mmWave library
+   - Peak Group if enabled
+   - Direction of Arrival(Azimuth) Estimation.
+
+*** 非交叉存取模式(Non-Interleaved Mode, AWR16xx Mode)
+
+
+***
+** 人员计数
+*** Tasks
+| Task's Name             | Priority | Function |
+|-------------------------+----------+----------|
+| MmwDemo_mssInitTask     |        3 |          |
+| MmwDemo_mboxReadTask    |        4 |          |
+| MmwDemo_mmWaveCtrlTask  |        6 |          |
+| MmwDemo_mssCtrlPathTask |        4 |          |
+| MmwDemo_appTask         |        2 |          |
+
+
+** xWR16xx
+典型的 xWR16xx 应用将会进行如下:
+- 通过 *mmWaveLink* 对射频前段进行控制以及监视
+- 通过标准外围设备传输外部通信
+- 使用 DSP 处理某些雷达数据
+典型的 xWR16xx 可定制部署:
+-
+- (可选的) 来自远程设备(remote entity)的上层控制
+- 发送 *低速数据* (检测到物体)给远程设备
+- (可选的) 通过 *LVDS* 将高速数据(debug)发送到设备之外
+
+*** 典型的毫米波雷达处理链[fn:mmwave_sdk_user_guide]
+mmWave Front End -> Radar data Capture -> Range FFT -> L3 memory -> Doppler FFT -> L3 memory -> Detection(non-coherent) -> Angle Estimation ->
+Clustering -> Tracking -> Classification -> Further Processing Control
+
+使用 mmWave SDK 实现上述雷达处理链:
+|                                              |                                                   |                   |
+|----------------------------------------------+---------------------------------------------------+-------------------|
+| mmWave Front NEd                             | BSS Firmware                                      |                   |
+| Radar Control                                | mmWaveLink+Mailbox driver                         |                   |
+| Radar data capture                           | ADCBUF driver                                     |                   |
+| Range FFT                                    | mmWaveLib                                         |                   |
+| L3 memory                                    | EDMA driver                                       |                   |
+| Doppler FFT                                  | mmWaveLib                                         |                   |
+| L3 driver                                    | EDMA driver                                       |                   |
+| Detection(CFAR-CA)                           | mmWaveLib                                         | mmWave Processing |
+| Angle Estimation                             | mmWaveLib                                         | mmWave Processing |
+| output over SPI/CANFD to external (optional) | SPI/CANFD                                         | mmWave API        |
+| Clustering                                   |                                                   |                   |
+| Tracking                                     | Application/mmWave Processing(external Processor) |                   |
+| classification                               |                                                   |                   |
+| Further Processing + control                 |                                                   |                   |
+
+Detail: =/opt/ti/mmwave_sdk_02_00_00_04/packages/ti/demo/xwr16xx/mmw= 文件夹内的代码以及文档
+
+[fn:mmwave_sdk_user_guide] mmwave_sdk_user_guide.pdf(Document Version 1.0) P39
+
+**** data path xWR16xx
+对于 xWR16xx，control path 能够单独运行在 MSS 上，单独运行在 DSS 上或者协作模式(co-operative, *初始化(init)* 以及 *配置(config)* 由 MSS 发起进行； *开始(start)* 由 DSS 在 data path 配置完成后发起进行)。mmWave 单元测试中提供了对 *三种* 模式的示例实现。
+
+
+**** data path xWR16xx
+上述雷达处理链中的 data path 主要运行于 DSS(C674x)
+|                         |               |                   |
+|-------------------------+---------------+-------------------|
+| mmWave Front End        | BSS Firmware  |                   |
+| Radar data capture      | ADCBUF Driver |                   |
+| Range FFT               | mmWaveLib     |                   |
+| L3 memory               | EDMA driver   |                   |
+| Doppler FFT             | mmWaveLib     |                   |
+| L3 memory               | EDMA driver   |                   |
+| Detection(non-coherent) | mmWaveLib     | mmWave Processing |
+| Angle Estimation        | mmWaveLib     | mmWave Processing |
+| output to R4F           |               |                   |
+
+
+Detail: 参考 =mmwave_sdk_<ver>\packages\ti\demo\xwr16xx\mmw\docs\doxygen\html\index.html= 提供的文档了解更多 data Path 中每个单独块的更多细节
+
+** SRR 短距雷达
+
+*** 前端相关
+SRR80:
+- 1 profile
+- 2 chirp -> 64 times per chirp
+- 1 Tx Antenna -> No MIMO
+
+USRR20:
+- 1 profile
+- 2 chirp -> TDM-MIMO
+- 2Tx & 4Rx -> MIMO
+
+*** MSS 流程
+| Task 名称              |    优先级 | 任务功能                       |
+|------------------------+-----------+--------------------------------|
+| SRR_MSS_initTask       |         3 | 初始化                         |
+| MmwDemo_mboxReadTask   | Default=1 | 信箱读取                       |
+| SRR_MSS_mmWaveCtrlTask |         6 | 控制模块执行上下文(配置 BSS？) |
+| CLI_Task               |         3 | 接收配置参数                   |
+
+**** mss_main 入口点
+1. 初始化全局变量 =gSrrMSSMCB=
+2. 初始化 SOC 模块，并赋值给句柄 =gSrrMSSMCB.socHandle=
+3. 创建 SRR_MSS_initTask，并设置优先级为 3
+4. 调用 BIOS_start() 接口函数执行调度
+
+**** SRR_MSS_initTask:
+1. 初始化 SDK 组件
+   - PINMUX
+   - UART
+   - GPIO
+   - MailBox
+2. 配置 Command/Loggin UART 端口
+3. 在 MSS 与 DSS 之间建立通信信道(Communication Channel)
+   - 创建 *二元信号量* 用于处理 mailbox 中断，并赋值给 =gSrrMSSMCB.mboxSemHandle=
+   - 配置信箱并创建信箱虚拟信道(Mailbox Virtual Channel)，并赋值给 =gSrrMSSMCB.peerMailbox=
+   - 创建 *任务* 处理信箱收到新的信息
+4. Register Chirp Available Listener
+5. Register Frame Start Listener
+6. 初始化毫米波模块
+   - 给配置结构体添加数据
+   - 初始化并安装 毫米波控制模块
+7. 调用 =MMWave_sync()= 接口 *等待同步*
+8. 将 毫米波控制模块 放在任务上下文来执行，相比其他任务需要更高的优先级(6)
+9. 设置(初始化)命令行界面：初始化 CLI 配置，设置任务优先级为 *3* ，设置每一条具体命令、帮助信息以及命令回调函数，完成设置后打开串口(完成任务的 *创建*)
+
+**** CLI_Task[fn:cli]:
+这个任务应该没有使用同步原语，循环等待 UART(gSrrMSSMCB.commandUartHandl) 端口数据。如果匹配，则执行相应的回调函数；否则报错。
+
+**** SRR_MSS_mmWaveCtrlTask[fn:mmwave]:
+文档：=file:///opt/ti/mmwave_sdk_02_00_00_04/packages/ti/control/mmwave/docs/doxygen/html/index.html=
+
+**** MmwDemo_mboxReadTask(4):
+使用 semphore 同步原语(gSrrMSSMCB.mboxSemHandle)，阻塞直到信箱(peerMailbox)有消息到来。读取信箱信息，如果成功，则 flush 掉信箱的信息以允许新的信息写入信箱；否则报错。判断消息类型，如果消息类型为 MMWDEMO_DSS2MSS_DETOBJ_READY，则通过 UART(gSrrMSSMCB.loggingUartHandle)发送 header 以及 TLVs，然后发送 padding 使得 packet 长度为 MMWDEMO_OUTPUT_MSG_SEGMENT_LEN 的整数倍。最后，将成功处理信息写入信箱反馈给 DSS，写入失败则报错；如果消息类型为 MMWDEMO_DSS2MSS_ASSERT_INFO，则将 aseert 信息写入到 gSrrMSSMCB.commandUartHandle；
+
+[fn:cli] =ti/utils/cli/cli.h= 以及 =ti/utils/cli/src/cli.c=
+[fn:mmwave] =ti/control/mmwave/mmwave.h= 以及 =ti/control/mmwave/src/mmwave.c=
+
+
+*** DSS 初始化流程
+| Task             | Priority | Functionality    |
+|------------------+----------+------------------|
+| SRR_DSS_initTask |        3 | 一次性初始化任务 |
+|                  |          |                  |
+
+**** dss_main 入口点
+1. 初始化全局变量 =gSrrDSSMCB=
+2. 将所有数据通道对象(data path object) =gSrrDSSMCB.dataPathObj= 初始化为已知状态
+3. 将 Chirp 配置导入到数据通道对象
+4. 调用 =MMwDemo_dataPathInitEdma= 初始化 EDMA
+5. 将 *某段* 与数据通道处理的代码从 L3 拷贝到 L1PSRAM，
+6. 初始化 SOC 配置及模块并将句柄赋值给 =gSrrDSSMCB.socHandle=
+7. 创建 =SRR_DSS_initTask= 任务，优先级默认设置为 1
+8. 调用 BIOS_start() API 接口函数执行调度
+
+**** SRR_DSS_initTask()
+1. 初始化 mmWave SDK 组件
+   - 初始化 mailbox
+   - 初始化 ADC buffer
+2. 注册中断向量，包括 Chirp 可用监听器(=gSrrDSSMCB.chirpIntHandle=)和帧开始监听器(=gSrrDSSMCB.frameStartIntHandle=)
+3. 打开信箱，并将返回的句柄复制给 =gSrrDSSMCB.peerMailbox=
+4. 对每个 subframe 配置数据通道
+5. 获取数据通道对象的句柄，对每个 subframe 配置 EDMA
+6. 将 logging buffer 标记为可用
+7. 创建 SRR_DSS_mmWaveTask 任务并设置优先级为 2，数据通道任务
+
+**** SRR_DSS_mmWaveTask
+在死循环中判断是否是以下三个事件之一：
+1. 帧开始事件 ::
+   + 清空 =gSrrDSSMCB.frameStartIntToken= 标志位
+   + 设定当前的 *数据通道对象*
+   + 断言上一帧完整地被处理完成，否则将错误信息传递给 MSS(=MmwDemo_dssAssert()=)
+
+2. chirp 事件 ::
+   + 将 gSrrDSSMCB.frameProcToken 标志位置 1
+   + MmwDemo_processChirp() 处理一个 chirp 数据
+     * 簿记时间戳
+     * verify if ping(or pong) buffer is free for odd(or even) chirps;不可用则等待一会
+     * 调用 =MmwDemo_interChirpProcessing()= 进行 *距离维度* 处理
+     * 根据 ping/pong 选择(修改)不同的 DMA 目标地址(1D-FFT output -> L3)
+     * 增加 =gSrrDSSMCB.chirpCount= 计数
+     * 增加 =gSrrDSSMCB.txAntennaCount= 计数
+     * 更新 txAntenna，dopplerBins 的计数值，同时判断当前子帧是否结束，若结束则将所有计数值 *清零*, 判断条件: txAntenna, dopplerBins, [chirpType]
+       - 对于 SRR80 数据通道: 1, 64, chirpType==2
+       - 对于 USRR20 数据通道: 2, 32
+   + =gSrrDSSMCB.chirpProcToken= 清零
+   + 判断当前子帧是否结束，判断方法：若 Chirp 计数为零(chirpCount == 0),则当前子帧结束
+     * 等待 chirp 结束
+     * =MmwDemo_interFrameProcessing()= 处理完整一帧数据
+     * =SRR_DSS_DataPathOutputLogging()= 将结果(检测到的物体)发送到 MSS 的 logging UART
+       - 若 logging buffer 不可用，则等待一小会来自 MSS 的信息，然后检测状态并调用 =MmwDemo_mboxReadProc()=, 来处理来自 MSS 的信息，这是因为 =gSrrDSSMCB.loggingBufferAvailable= 标志位可以在该函数中标记置为 *可用*
+       - 若 logging buffer 可用，则通过将 =gSrrDSSMCB.loggingBufferAvailable= 置零标记为 *不可用* ，;若 logging buffer *仍然* 不可用，则跳过将检测到的物体保存到 logging buffer 继而进行下一阵处理。
+     * 更新子帧的索引值，为处理新的一帧准备好 *数据通道对象*
+   + 将 gSrrDSSMCB.frameProcToken 标志位清零
+
+3. 信箱事件 ::
+   + 将 =gSrrDSSMCB.mboxProcToken= 标志位清零
+   + 阻塞等待信箱信息到来(MSS->DSS)，分为三种情况
+     * retVal<0 :: 出错
+     * retVal :: 无信息到来，直接返回
+     * retVal>0 :: Flush mailbox 的内容，表示已经完成信息的读取，允许处理信息的同时接收下一条信息
+       - 若消息类型为 =MMWDEMO_MSS2DSS_DETOBJ_SHIPPED=, 计算 *已经发送* 帧所使用的时间，然后将 =gSrrDSSMCB.loggingBufferAvailable= 标志位置 1 表示可以向 MSS 发送帧处理结果(检测到的物体)
+       - 若为其他消息类型，则通过 =MmwDemo_dssAssert()= 报错

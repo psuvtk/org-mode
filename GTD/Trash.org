@@ -1,0 +1,17 @@
+#+AUTHOR Kristoffer Song
+#+EMAIL psuvtk@gmail.com
+#+STARTUP: showeverything
+#+STARTUP: hidestars
+#+STARTUP: indent
+
+* Trash
+
+** 2018 年
+
+
+*** CANCELED 申请提前搬入研究生宿舍                      :personal:ARCHIVE:
+CLOSED: [2018-06-20 三 20:20] DEADLINE: <2018-06-28 四>
+- State "CANCELED"   from "PENGDING"   [2018-06-20 三 20:20]
+- State "PENGDING"   from              [2018-06-18 一 15:08]
+***
+** Ideas

@@ -1,0 +1,37 @@
+* Vim
+**** 使用 vim 将 Windows 换行符转换为 Linux 格式
+
+```
+:set fileformat=unix
+```
+
+
+* Emacs
+自己动手配置太麻烦了，还是用下别人的配置，熟悉了再精简或者配置自己的
+
+
+**** 使用中文输入法
+space 不能切换输入法
+原因： `LANG=en_US.UTF-8`
+解决方法： `LC_CTYPE=zh_CN.UTF-8 emacs`
+KDE 中键盘快捷键上述命令不管用，使用`zsh -c 'LC_CTYPE=zh_CN.UTF-8 emacs'`
+```
+sudo vim /etc/environment
+eexport LC_CTYPE="zh_CN.UTF-8"
+locale-gen
+```
+
+输入法 退出 evil-insert-mode 时自动切换输入法
+```
+(chinese :variables
+              chinese-enable-fcitx t
+              )
+```
+
+
+**** Alchemist for Elixir
+
+**** Python
+使用 [[https://github.com/pyenv/pyenv][pyenv]] 来管理多个 python 环境
+在 Ubuntu 上安装 pyenv 时遇到错误`/usr/bin/env: bash\r ...`错误，
+解决方法： 安装 `dos2unix`, 执行`find . -type f -exec dos2unix {} \;`

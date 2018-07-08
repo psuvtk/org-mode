@@ -1,0 +1,30 @@
+
+
+
+*  CMake 小笔记
+
+为了不弄脏文件夹，建立一个 =build= 文件夹，然后生成的文件都在这个文件夹里面。
+#+BEGIN_SRC
+mkdir build
+cd build
+cmake ..
+make
+#+END_SRC
+
+
+
+#+BEGIN_SRC
+生成可执行文件
+add_executable( hello hello.cpp )
+
+生成静态库
+add_library( hello libHello.cpp )
+
+生成共享库.so
+add_library( hello_shared SHARED libHello.cpp )
+
+
+使用 hello_shared 库
+add_executable( useHello userHello.cpp )
+target_link_libraries( userHello hello_shared )
+#+END_SRC

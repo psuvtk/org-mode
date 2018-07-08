@@ -1,0 +1,25 @@
+#+AUTHOR Kristoffer Song
+#+EMAIL psuvtk@gmail.com
+#+STARTUP: indent
+#+STARTUP: showeverything
+#+STARTUP: hidestars
+
+
+* Tasks
+** Once
+*** TODO 走廊人员追踪实验（毫米波） :lab:
+DEADLINE: <2018-07-07 六>
+- State "TODO"       from              [2018-06-17 日 12:39]
+*** TODO 阅读无人驾驶开源项目并总结                                   :lab:
+DEADLINE: <2018-07-31 二>
+- State "TODO"       from "PENGDING"   [2018-06-30 六 15:32]
+总结能实际应用的开源无人驾驶项目，有可能公司根据这个招人
+- State "PENGDING"   from              [2018-06-30 六 15:30]
+*** TODO 阅读《城市作战陆战平台智能感知系统》，总结关键技术
+DEADLINE: <2018-07-31 二>
+- State "TODO"       from              [2018-07-03 二 09:24]
+** Periodic
+
+** Ideas
+   - Elixir Nerver
+   - SYS/BIOS

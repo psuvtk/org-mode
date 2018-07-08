@@ -1,0 +1,21 @@
+#+AUTHOR Kristoffer Song
+#+EMAIL psuvtk@gmail.com
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+STARTUP: indent
+
+
+* Inbox
+** Periodic
+*** PENGDING 学习 Elixir Nerves                                      :learn:
+- State "PENGDING"   from              [2018-06-18 一 15:09]
+*** 阅读学习《视觉 SLAM 十四讲：从理论到实践》
+** New
+
+*** PENGDING 数据结构学习-优先队列 :personal:
+    - State "PENGDING"   from              [2018-06-17 日 21:23]
+*** PENGDING 数据结构学习-平衡二叉树 :personal:
+    - State "PENGDING"   from              [2018-06-17 日 21:23]
+*** PENGDING UWB P440 实现机器人定位 :lab:
+    - State "PENGDING"   from              [2018-06-17 日 21:24]
+** Misc

@@ -1,0 +1,1340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-07-08 日 21:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="kristoffer" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org27323e0">1. SYS/BIOS</a>
+<ul>
+<li><a href="#org9fb33cf">1.1. IWR1642 笔记</a>
+<ul>
+<li><a href="#org2f15cce">1.1.1. startup</a></li>
+<li><a href="#org18d6174">1.1.2. Software Tasks on MSS</a></li>
+<li><a href="#org1d2141e">1.1.3. Software Task on DSS</a></li>
+<li><a href="#orgd206d5c">1.1.4. 一些初始化</a></li>
+<li><a href="#orge45bb11">1.1.5. ADC buffer</a></li>
+<li><a href="#org0a6602b">1.1.6. FFT</a></li>
+<li><a href="#orgfe08c56">1.1.7. Mainlbox</a></li>
+<li><a href="#orga0be0bd">1.1.8. Programmer view of DSP Subsystem</a></li>
+<li><a href="#orgfca0503">1.1.9. Main Datastructure</a></li>
+<li><a href="#org74ab559">1.1.10. Task_Params 结构体</a></li>
+</ul>
+</li>
+<li><a href="#orgeefcb59">1.2. Data Path</a>
+<ul>
+<li><a href="#org2a6f97b">1.2.1. 概览</a></li>
+<li><a href="#org07b4288">1.2.2. 非交叉存取模式(Non-Interleaved Mode, AWR16xx Mode)</a></li>
+</ul>
+</li>
+<li><a href="#org0b26095">1.3. 人员计数</a>
+<ul>
+<li><a href="#orgc5de716">1.3.1. Tasks</a></li>
+</ul>
+</li>
+<li><a href="#org96c531a">1.4. xWR16xx</a>
+<ul>
+<li><a href="#org0cacc9d">1.4.1. 典型的毫米波雷达处理链</a></li>
+</ul>
+</li>
+<li><a href="#orgf0b788c">1.5. SRR 短距雷达</a>
+<ul>
+<li><a href="#orgbcb97a1">1.5.1. 前端相关</a></li>
+<li><a href="#org8b45bd6">1.5.2. MSS 流程</a></li>
+<li><a href="#org5fc0546">1.5.3. DSS 初始化流程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org27323e0" class="outline-2">
+<h2 id="org27323e0"><span class="section-number-2">1</span> SYS/BIOS</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org9fb33cf" class="outline-3">
+<h3 id="org9fb33cf"><span class="section-number-3">1.1</span> IWR1642 笔记</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgf5c873e"></a>Terminology 术语：<br />
+<div class="outline-text-5" id="text-1-1-0-1">
+<dl class="org-dl">
+<dt>MSS</dt><dd>Master Subsystem</dd>
+<dt>DSS</dt><dd>DSP Subsystem</dd>
+<dt>BSS</dt><dd>RADAR Subsystem</dd>
+<dt>MCB</dt><dd>Master Control Block</dd>
+<dt>Control Path</dt><dd>指使用 mmWave API(mmWaveLink+Mailbox driver)实现对 BSS_Firmware 的控制，即：Radar Control &#x2013;&gt; mmWave Front End</dd>
+<dt>Data Path</dt><dd>从雷达射频前段开始数据的处理流程</dd>
+</dl>
+</div>
+</li>
+
+<li><a id="org92b1243"></a>cheat-sheet<br />
+<div class="outline-text-5" id="text-1-1-0-2">
+<dl class="org-dl">
+<dt>pingpong</dt><dd>一种缓存手段，使用多个低速的数据预处理模块处理高速的输入数据流。这样做可以提高系统的数据吞吐量</dd>
+</dl>
+</div>
+</li>
+
+
+<li><a id="org8dd54c4"></a>MIMO Radar 调制方式<br />
+<div class="outline-text-5" id="text-1-1-0-3">
+<ul class="org-ul">
+<li>TDM-MIMO: 简单，但是不能充分利用设备的发送能力</li>
+<li>BPM-MIMO: 使用 BPM 进行时域编码，连续发送。增大了总的发射功率，因此 SNR 变好 10log10(N<sub>TX</sub>)，对于 N=2，S<sub>1</sub> = (S<sub>a</sub> + S<sub>b</sub>)/2, S<sub>2</sub> = (S<sub>a</sub>-S<sub>b</sub>)/2；对于 N=4 的情况， 使用 4x4 的 Hadamard 矩阵进行解码。相比 TDM-MIMO，处理流程多了解码块(decoding block)。</li>
+</ul>
+</div>
+</li>
+
+
+<li><a id="orgd22b138"></a>TX 信号配置<br />
+<div class="outline-text-5" id="text-1-1-0-4">
+<p>
+三个概念：
+</p>
+<dl class="org-dl">
+<dt>Profile</dt><dd>包含多个与 Chirp 发送与接收有关的参数的模板。包括 TX 参数比如: 起始频率，斜率，持续时间以及空闲时间(idle time)；接收参数比如: ADC 采样时间。至多可以定义和保存 <b>4</b> 个不同的 Profile</dd>
+<dt>Chirp</dt><dd>每个 Chirp 的类型与一个特定的 Profile 相关联并且继承该 Profile 的所有属性。额外的与每个 Chirp 相关联的参数包括用来发送的 <b>天线</b> 以及应用的二进制相角 <b>调制</b> 方式。最多可以定义 <b>512</b> 个不同的 Chirp 类型(每个 Chirp 类型与上述四个预定义的 Profile 类型之一相关联)。</dd>
+<dt>Frame</dt><dd>Frame 由预定义的 Chirp 类型的 <b>序列</b> 构成。也可以是由不同 <b>帧</b> 构成的序列，每帧由不同 chirp 类型的 Chirp 序列构成。</dd>
+</dl>
+</div>
+</li>
+</ol>
+
+
+<div id="outline-container-org2f15cce" class="outline-4">
+<h4 id="org2f15cce"><span class="section-number-4">1.1.1</span> startup</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+（这里有个图片）
+</p>
+</div>
+</div>
+
+
+
+
+
+
+<div id="outline-container-org18d6174" class="outline-4">
+<h4 id="org18d6174"><span class="section-number-4">1.1.2</span> Software Tasks on MSS</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task's Name</th>
+<th scope="col" class="org-left">Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MmwDemo_mssInitTask</td>
+<td class="org-left">一次性初始化任务</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_mmWaveCtrlTask</td>
+<td class="org-left">为 mmWave 控制提供执行的上下文，无限循环执行 MMWave_execute 接口函数</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_mssCtrlPathTask</td>
+<td class="org-left">处理来自 CLI_Task 的 data path events 或者 EVM 上的 SOC_XWR16XX_GPIO_1 按钮，并将 start/stop 完成事件反馈给 CLI_Task</td>
+</tr>
+
+<tr>
+<td class="org-left">CLI_task</td>
+<td class="org-left">接收用户命令以及发送事件给 MmwDemo_mssCtrlPathTask，对于 start/stop 命令，等待来自 MmwDemo_mssCtrlPathTask 的完成事件；若成功则点亮 SOC_XWR16XX_GPIO_2.</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_mboxReadTask</td>
+<td class="org-left">　处理从信箱接收到来自 DSS 的信息</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+<div id="outline-container-org1d2141e" class="outline-4">
+<h4 id="org1d2141e"><span class="section-number-4">1.1.3</span> Software Task on DSS</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task's Name</th>
+<th scope="col" class="org-left">Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MmwDemo_dssInitTask</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_mboxReadTask</td>
+<td class="org-left">处理从信箱接收到的来自 MSS 的信息</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_dssMMWaveCtrlTask</td>
+<td class="org-left">为 mmWave control 提供执行的上下文，在无限循环中执行 MMWave_execute 接口函数</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_dssDataPathTask</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgd206d5c" class="outline-4">
+<h4 id="orgd206d5c"><span class="section-number-4">1.1.4</span> 一些初始化</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Soc_init</td>
+<td class="org-left">initialize and setup the SOC Driver. If the system clock configuration is initialized then the function will unhalt the BSS and will wait until the APLL calibiration is completed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orge45bb11" class="outline-4">
+<h4 id="orge45bb11"><span class="section-number-4">1.1.5</span> ADC buffer</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<p>
+ping-pong 机制 双缓冲，The ADC buffer is implemented as a double buffering (ping-pong) mechanism that allows for one buffer to
+be written to (filled) while the other one is being read out (emptied).
+</p>
+
+<p>
+The size of the ADC buffer is:
+</p>
+<ul class="org-ul">
+<li>16 KB for each ping and pong buffers on AWR12xx and AWR14xx devices</li>
+<li>32 KB for each ping and pong buffers on AWR16xx</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org0a6602b" class="outline-4">
+<h4 id="org0a6602b"><span class="section-number-4">1.1.6</span> FFT</h4>
+<div class="outline-text-4" id="text-1-1-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">1D-Range-FFT</td>
+<td class="org-left">一个 Chirp 一个天线的 256 个采样点</td>
+</tr>
+
+<tr>
+<td class="org-left">2D-Velosity-FFT</td>
+<td class="org-left">同一个 frame 不同 Chirp 同一个天线之间</td>
+</tr>
+
+<tr>
+<td class="org-left">3D-Angle-FFT</td>
+<td class="org-left">相同 Chirp 不同天线之间</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orgfe08c56" class="outline-4">
+<h4 id="orgfe08c56"><span class="section-number-4">1.1.7</span> Mainlbox</h4>
+<div class="outline-text-4" id="text-1-1-7">
+<p>
+信箱用于两个处理器之间 <b>异步地</b> 交换信息，每个处理器拥有 MailBox 内存空间以及寄存器(用于其他处理器与之通信)，每个处理器有 <b>两套</b> mailbox 内存空间和寄存器用于供其他处理器与之通信<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>。
+Message from sender to receiver:
+</p>
+<ol class="org-ol">
+<li><b>SENDER</b> writes the message in the <b>RECEIVER</b> mailbox <b>RECEIVER_MBOX4SENDER</b></li>
+<li><b>SENDER</b> triggers an interupt to <b>RECEIVER</b> by writing 1 to <b>RECEIVER_MBOX4SENDER_REG_INT_TRIG[0]</b>. This generate a mailbox-level interupt to <b>RECEIVER</b></li>
+<li><b>RECEIVER</b> clear the interupt by writing 1 to <b>RECEIVER_MBOX4SENDER_REG_INT_ACK[0]</b>.</li>
+<li><b>RECEIVER</b> read message from the mailbox</li>
+<li><b>RECEIVER</b> triggers an interupt to <b>SENDER</b> indicating the mailbox is read, by writing 1 to <b>SENDER_MBOX4RECEIVER_REG_INT_TRIG[1]</b>.</li>
+<li><b>SENDER</b> clear the interupt by writing 1 to <b>SENDER_MBOX4RECEIVER_REG_INT_ACK[1]</b></li>
+</ol>
+
+<p>
+MailBox Message Example( Message from MSS to DSS):
+</p>
+<ol class="org-ol">
+<li><b>MSS</b> writes the message in the <b>DSS</b> mailbox (<b>DSS_MBOX4MSS</b>)</li>
+<li><b>MSS</b> triggers an interupt to <b>DSS</b> by writing 1 to <b>DSS_MBOX4MSS_REG_INT_TRIG[0]</b>. This generates a mailbox-level interupt to DSS.</li>
+<li><b>DSS</b> clears the interupt by writing 1 to <b>DSS_MBOX4MSS_REG_INT_ACK[0]</b></li>
+<li><b>DSS</b> reads the message from the mailbox</li>
+<li><b>DSS</b> triggers the interupt to indicating the mailbox is read, by writing 1 to <b>MSS_MBOX4DSS_REG_INT_TRIG[1]</b></li>
+<li><b>MSS</b> clears the interupt by writing 1 to <b>MSS_MBOX4DSS_REG_INT_ACK[1]</b></li>
+</ol>
+
+<p>
+MailBox Message Example( Message from DSS to MSS):
+</p>
+<ol class="org-ol">
+<li><b>DSS</b> writes the message in the <b>MSS</b> mailbox (<b>MSS_MBOX4DSS</b>)</li>
+<li><b>DSS</b> triggers an interupt to <b>DSS</b> by writing 1 to <b>MSS_MBOX4DSS_REG_INT_TRIG[0]</b>. This generates a mailbox-level interupt to DSS.</li>
+<li><b>MSS</b> clears the interupt by writing 1 to <b>MSS_MBOX4DSS_REG_INT_ACK[0]</b></li>
+<li><b>MSS</b> reads the message from the mailbox</li>
+<li><b>MSS</b> triggers the interupt to indicating the mailbox is read, by writing 1 to <b>DSS_MBOX4MSS_REG_INT_TRIG[1]</b></li>
+<li><b>MSS</b> clears the interupt by writing 1 to <b>DSS_MBOX4MSS_REG_INT_ACK[1]</b></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orga0be0bd" class="outline-4">
+<h4 id="orga0be0bd"><span class="section-number-4">1.1.8</span> Programmer view of DSP Subsystem</h4>
+<div class="outline-text-4" id="text-1-1-8">
+<ol class="org-ol">
+<li>user <b>handshake RAM</b> share data between MSS and DSS, store final target list</li>
+<li>ADC buffer: digitilized IF signal ADC data from digital front-end</li>
+<li>L3 buffer: Primarily store radar-cubed data</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgfca0503" class="outline-4">
+<h4 id="orgfca0503"><span class="section-number-4">1.1.9</span> Main Datastructure</h4>
+<div class="outline-text-4" id="text-1-1-9">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #036A07;">/**</span>
+<span style="color: #036A07;"> * </span><span style="color: #D0372D;">@brief</span>
+<span style="color: #036A07;"> *  Millimeter Wave Demo MCB</span>
+<span style="color: #036A07;"> *</span>
+<span style="color: #036A07;"> * </span><span style="color: #D0372D;">@details</span>
+<span style="color: #036A07;"> *  The structure is used to hold all the relevant information for the</span>
+<span style="color: #036A07;"> *  Millimeter Wave demo</span>
+<span style="color: #036A07;"> */</span>
+<span style="color: #0000FF;">typedef</span> <span style="color: #0000FF;">struct</span> <span style="color: #6434A3;">MmwDemo_MCB_t</span>
+<span style="color: #707183;">{</span>
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   Configuration which is used to execute the demo </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">MmwDemo_Cfg</span>                 <span style="color: #BA36A5;">cfg</span>;
+<span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! * @brief   Handle to the SOC Module </span><span style="color: #8D8D84;">*/</span> <span style="color: #6434A3;">SOC_Handle</span>                  <span style="color: #BA36A5;">socHandle</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   UART Logging Handle </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">UART_Handle</span>                 <span style="color: #BA36A5;">loggingUartHandle</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   UART Command Rx/Tx Handle </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">UART_Handle</span>                 <span style="color: #BA36A5;">commandUartHandle</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   This is the mmWave control handle which is used</span>
+<span style="color: #8D8D84; font-style: italic;">     * to configure the BSS. </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">MMWave_Handle</span>               <span style="color: #BA36A5;">ctrlHandle</span>;
+
+   <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">f</span>
+   <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Mailbox_Handle              peerMailbox;</span>
+    <span style="color: #6434A3;">Mbox_Handle</span>              <span style="color: #BA36A5;">peerMailbox</span>;
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   Semaphore handle for the mailbox communication </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">Semaphore_Handle</span>            <span style="color: #BA36A5;">mboxSemHandle</span>;
+
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   Semaphore handle for the application task </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">Semaphore_Handle</span>                    <span style="color: #BA36A5;">appSemHandle</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   Point Cloud </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">MmwDemo_output_message_pointCloud</span>   *<span style="color: #BA36A5;">pointCloud</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   Target Descriptors </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">MmwDemo_targetDescrHandle</span>   *<span style="color: #BA36A5;">targetDescrHandle</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   Tracker Handle </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">void</span>                      *<span style="color: #BA36A5;">gtrackHandle</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   MSS system event handle </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">Event_Handle</span>                <span style="color: #BA36A5;">eventHandle</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   Handle to the SOC chirp interrupt listener Handle </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">SOC_SysIntListenerHandle</span>    <span style="color: #BA36A5;">chirpIntHandle</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   Handle to the SOC frame start interrupt listener Handle </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">SOC_SysIntListenerHandle</span>    <span style="color: #BA36A5;">frameStartIntHandle</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   Data Path object: currently only for receiving data from DSS. Potentially adding other block such as tracking here</span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">MmwDemo_MSS_DataPathObj</span>     <span style="color: #BA36A5;">mssDataPathObj</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   Has the mmWave module been opened? </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">bool</span>                        <span style="color: #BA36A5;">isMMWaveOpen</span>;
+
+    <span style="color: #8D8D84;">/*</span><span style="color: #8D8D84; font-style: italic;">! @brief   mmw Demo stats </span><span style="color: #8D8D84;">*/</span>
+    <span style="color: #6434A3;">MmwDemo_MSS_STATS</span>           <span style="color: #BA36A5;">stats</span>;
+<span style="color: #707183;">}</span> <span style="color: #6434A3;">MmwDemo_MCB</span>;
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org74ab559" class="outline-4">
+<h4 id="org74ab559"><span class="section-number-4">1.1.10</span> Task_Params 结构体</h4>
+<div class="outline-text-4" id="text-1-1-10">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #0000FF;">typedef</span> <span style="color: #0000FF;">struct</span> <span style="color: #6434A3;">Task_Params</span> <span style="color: #707183;">{</span>
+<span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Instance config-params structure</span>
+    <span style="color: #6434A3;">IInstance_Params</span> *<span style="color: #BA36A5;">instance</span>;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Common per-instance configs</span>
+    <span style="color: #6434A3;">UInt</span> <span style="color: #BA36A5;">affinity</span>;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">The core which this task is to run on. Default is Task_AFFINITY_NONE</span>
+    <span style="color: #6434A3;">UArg</span> <span style="color: #BA36A5;">arg0</span>;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Task function argument. Default is 0</span>
+    <span style="color: #6434A3;">UArg</span> <span style="color: #BA36A5;">arg1</span>;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Task function argument. Default is 0</span>
+    <span style="color: #6434A3;">Ptr</span> <span style="color: #BA36A5;">env</span>;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Environment data struct</span>
+    <span style="color: #6434A3;">Int</span> <span style="color: #BA36A5;">priority</span>;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Task priority (0 to Task.numPriorities-1, or -1). Default is 1</span>
+    <span style="color: #6434A3;">Ptr</span> <span style="color: #BA36A5;">stack</span>;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Task stack pointer. Default = null</span>
+    <span style="color: #6434A3;">IHeap_Handle</span> <span style="color: #BA36A5;">stackHeap</span>;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Mem heap used for dynamically created task stack</span>
+    <span style="color: #6434A3;">SizeT</span> <span style="color: #BA36A5;">stackSize</span>;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Task stack size in MAUs</span>
+    <span style="color: #6434A3;">Bool</span> <span style="color: #BA36A5;">vitalTaskFlag</span>;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">Exit system immediately when the last task with this flag set to TRUE has terminated</span>
+<span style="color: #707183;">}</span> <span style="color: #6434A3;">Task_Params</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeefcb59" class="outline-3">
+<h3 id="orgeefcb59"><span class="section-number-3">1.2</span> Data Path</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org2a6f97b" class="outline-4">
+<h4 id="org2a6f97b"><span class="section-number-4">1.2.1</span> 概览</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ol class="org-ol">
+<li>Processing during chirps
+<ul class="org-ul">
+<li>1D(range)-FFT that takes input from multile tx from <b>ADC buffer</b></li>
+<li>transfer output into <b>L3 RAM</b> by EDMA</li>
+</ul></li>
+<li>Processing during time between the end of chirps until the beggening of the next chirping period
+<ul class="org-ul">
+<li>2D(velosity)-FFT that read input from 1D output in L3RAM in a transpose manner(using EDMA) and perform FFT to give a (range,velosity) matrix in the RAM. the process also includes the <b>CFAR</b> detection in Doppler direction.</li>
+<li>CFAR detection in range direction using mmWave library</li>
+<li>Peak Group if enabled</li>
+<li>Direction of Arrival(Azimuth) Estimation.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org07b4288" class="outline-4">
+<h4 id="org07b4288"><span class="section-number-4">1.2.2</span> 非交叉存取模式(Non-Interleaved Mode, AWR16xx Mode)</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+<b>*</b>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0b26095" class="outline-3">
+<h3 id="org0b26095"><span class="section-number-3">1.3</span> 人员计数</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgc5de716" class="outline-4">
+<h4 id="orgc5de716"><span class="section-number-4">1.3.1</span> Tasks</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task's Name</th>
+<th scope="col" class="org-right">Priority</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MmwDemo_mssInitTask</td>
+<td class="org-right">3</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_mboxReadTask</td>
+<td class="org-right">4</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_mmWaveCtrlTask</td>
+<td class="org-right">6</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_mssCtrlPathTask</td>
+<td class="org-right">4</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_appTask</td>
+<td class="org-right">2</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org96c531a" class="outline-3">
+<h3 id="org96c531a"><span class="section-number-3">1.4</span> xWR16xx</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+典型的 xWR16xx 应用将会进行如下:
+</p>
+<ul class="org-ul">
+<li>通过 <b>mmWaveLink</b> 对射频前段进行控制以及监视</li>
+<li>通过标准外围设备传输外部通信</li>
+<li>使用 DSP 处理某些雷达数据</li>
+</ul>
+<p>
+典型的 xWR16xx 可定制部署:
+</p>
+<ul class="org-ul">
+<li></li>
+
+<li>(可选的) 来自远程设备(remote entity)的上层控制</li>
+<li>发送 <b>低速数据</b> (检测到物体)给远程设备</li>
+<li>(可选的) 通过 <b>LVDS</b> 将高速数据(debug)发送到设备之外</li>
+</ul>
+</div>
+
+<div id="outline-container-org0cacc9d" class="outline-4">
+<h4 id="org0cacc9d"><span class="section-number-4">1.4.1</span> 典型的毫米波雷达处理链<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+mmWave Front End -&gt; Radar data Capture -&gt; Range FFT -&gt; L3 memory -&gt; Doppler FFT -&gt; L3 memory -&gt; Detection(non-coherent) -&gt; Angle Estimation -&gt;
+Clustering -&gt; Tracking -&gt; Classification -&gt; Further Processing Control
+</p>
+
+<p>
+使用 mmWave SDK 实现上述雷达处理链:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">mmWave Front NEd</td>
+<td class="org-left">BSS Firmware</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Radar Control</td>
+<td class="org-left">mmWaveLink+Mailbox driver</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Radar data capture</td>
+<td class="org-left">ADCBUF driver</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Range FFT</td>
+<td class="org-left">mmWaveLib</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">L3 memory</td>
+<td class="org-left">EDMA driver</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Doppler FFT</td>
+<td class="org-left">mmWaveLib</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">L3 driver</td>
+<td class="org-left">EDMA driver</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Detection(CFAR-CA)</td>
+<td class="org-left">mmWaveLib</td>
+<td class="org-left">mmWave Processing</td>
+</tr>
+
+<tr>
+<td class="org-left">Angle Estimation</td>
+<td class="org-left">mmWaveLib</td>
+<td class="org-left">mmWave Processing</td>
+</tr>
+
+<tr>
+<td class="org-left">output over SPI/CANFD to external (optional)</td>
+<td class="org-left">SPI/CANFD</td>
+<td class="org-left">mmWave API</td>
+</tr>
+
+<tr>
+<td class="org-left">Clustering</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Tracking</td>
+<td class="org-left">Application/mmWave Processing(external Processor)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">classification</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Further Processing + control</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Detail: <code>/opt/ti/mmwave_sdk_02_00_00_04/packages/ti/demo/xwr16xx/mmw</code> 文件夹内的代码以及文档
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org759ec16"></a>data path xWR16xx<br />
+<div class="outline-text-5" id="text-1-4-1-1">
+<p>
+对于 xWR16xx，control path 能够单独运行在 MSS 上，单独运行在 DSS 上或者协作模式(co-operative, <b>初始化(init)</b> 以及 <b>配置(config)</b> 由 MSS 发起进行； <b>开始(start)</b> 由 DSS 在 data path 配置完成后发起进行)。mmWave 单元测试中提供了对 <b>三种</b> 模式的示例实现。
+</p>
+</div>
+</li>
+
+
+<li><a id="orgd7df5ef"></a>data path xWR16xx<br />
+<div class="outline-text-5" id="text-1-4-1-2">
+<p>
+上述雷达处理链中的 data path 主要运行于 DSS(C674x)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">mmWave Front End</td>
+<td class="org-left">BSS Firmware</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Radar data capture</td>
+<td class="org-left">ADCBUF Driver</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Range FFT</td>
+<td class="org-left">mmWaveLib</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">L3 memory</td>
+<td class="org-left">EDMA driver</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Doppler FFT</td>
+<td class="org-left">mmWaveLib</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">L3 memory</td>
+<td class="org-left">EDMA driver</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Detection(non-coherent)</td>
+<td class="org-left">mmWaveLib</td>
+<td class="org-left">mmWave Processing</td>
+</tr>
+
+<tr>
+<td class="org-left">Angle Estimation</td>
+<td class="org-left">mmWaveLib</td>
+<td class="org-left">mmWave Processing</td>
+</tr>
+
+<tr>
+<td class="org-left">output to R4F</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Detail: 参考 <code>mmwave_sdk_&lt;ver&gt;\packages\ti\demo\xwr16xx\mmw\docs\doxygen\html\index.html</code> 提供的文档了解更多 data Path 中每个单独块的更多细节
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgf0b788c" class="outline-3">
+<h3 id="orgf0b788c"><span class="section-number-3">1.5</span> SRR 短距雷达</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-orgbcb97a1" class="outline-4">
+<h4 id="orgbcb97a1"><span class="section-number-4">1.5.1</span> 前端相关</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+SRR80:
+</p>
+<ul class="org-ul">
+<li>1 profile</li>
+<li>2 chirp -&gt; 64 times per chirp</li>
+<li>1 Tx Antenna -&gt; No MIMO</li>
+</ul>
+
+<p>
+USRR20:
+</p>
+<ul class="org-ul">
+<li>1 profile</li>
+<li>2 chirp -&gt; TDM-MIMO</li>
+<li>2Tx &amp; 4Rx -&gt; MIMO</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8b45bd6" class="outline-4">
+<h4 id="org8b45bd6"><span class="section-number-4">1.5.2</span> MSS 流程</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task 名称</th>
+<th scope="col" class="org-right">优先级</th>
+<th scope="col" class="org-left">任务功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">SRR_MSS_initTask</td>
+<td class="org-right">3</td>
+<td class="org-left">初始化</td>
+</tr>
+
+<tr>
+<td class="org-left">MmwDemo_mboxReadTask</td>
+<td class="org-right">Default=1</td>
+<td class="org-left">信箱读取</td>
+</tr>
+
+<tr>
+<td class="org-left">SRR_MSS_mmWaveCtrlTask</td>
+<td class="org-right">6</td>
+<td class="org-left">控制模块执行上下文(配置 BSS？)</td>
+</tr>
+
+<tr>
+<td class="org-left">CLI_Task</td>
+<td class="org-right">3</td>
+<td class="org-left">接收配置参数</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgfbd41d9"></a>mss_main 入口点<br />
+<div class="outline-text-5" id="text-1-5-2-1">
+<ol class="org-ol">
+<li>初始化全局变量 <code>gSrrMSSMCB</code></li>
+<li>初始化 SOC 模块，并赋值给句柄 <code>gSrrMSSMCB.socHandle</code></li>
+<li>创建 SRR_MSS_initTask，并设置优先级为 3</li>
+<li>调用 BIOS_start() 接口函数执行调度</li>
+</ol>
+</div>
+</li>
+
+<li><a id="org80cf235"></a>SRR_MSS_initTask:<br />
+<div class="outline-text-5" id="text-1-5-2-2">
+<ol class="org-ol">
+<li>初始化 SDK 组件
+<ul class="org-ul">
+<li>PINMUX</li>
+<li>UART</li>
+<li>GPIO</li>
+<li>MailBox</li>
+</ul></li>
+<li>配置 Command/Loggin UART 端口</li>
+<li>在 MSS 与 DSS 之间建立通信信道(Communication Channel)
+<ul class="org-ul">
+<li>创建 <b>二元信号量</b> 用于处理 mailbox 中断，并赋值给 <code>gSrrMSSMCB.mboxSemHandle</code></li>
+<li>配置信箱并创建信箱虚拟信道(Mailbox Virtual Channel)，并赋值给 <code>gSrrMSSMCB.peerMailbox</code></li>
+<li>创建 <b>任务</b> 处理信箱收到新的信息</li>
+</ul></li>
+<li>Register Chirp Available Listener</li>
+<li>Register Frame Start Listener</li>
+<li>初始化毫米波模块
+<ul class="org-ul">
+<li>给配置结构体添加数据</li>
+<li>初始化并安装 毫米波控制模块</li>
+</ul></li>
+<li>调用 <code>MMWave_sync()</code> 接口 <b>等待同步</b></li>
+<li>将 毫米波控制模块 放在任务上下文来执行，相比其他任务需要更高的优先级(6)</li>
+<li>设置(初始化)命令行界面：初始化 CLI 配置，设置任务优先级为 <b>3</b> ，设置每一条具体命令、帮助信息以及命令回调函数，完成设置后打开串口(完成任务的 <b>创建</b>)</li>
+</ol>
+</div>
+</li>
+
+<li><a id="org2dcc701"></a>CLI_Task<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>:<br />
+<div class="outline-text-5" id="text-1-5-2-3">
+<p>
+这个任务应该没有使用同步原语，循环等待 UART(gSrrMSSMCB.commandUartHandl) 端口数据。如果匹配，则执行相应的回调函数；否则报错。
+</p>
+</div>
+</li>
+
+<li><a id="orgc7a8a68"></a>SRR_MSS_mmWaveCtrlTask<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>:<br />
+<div class="outline-text-5" id="text-1-5-2-4">
+<p>
+文档：=<a href="file:///opt/ti/mmwave_sdk_02_00_00_04/packages/ti/control/mmwave/docs/doxygen/html/index.html">file:///opt/ti/mmwave_sdk_02_00_00_04/packages/ti/control/mmwave/docs/doxygen/html/index.html</a>=
+</p>
+</div>
+</li>
+
+<li><a id="org999cead"></a>MmwDemo_mboxReadTask(4):<br />
+<div class="outline-text-5" id="text-1-5-2-5">
+<p>
+使用 semphore 同步原语(gSrrMSSMCB.mboxSemHandle)，阻塞直到信箱(peerMailbox)有消息到来。读取信箱信息，如果成功，则 flush 掉信箱的信息以允许新的信息写入信箱；否则报错。判断消息类型，如果消息类型为 MMWDEMO_DSS2MSS_DETOBJ_READY，则通过 UART(gSrrMSSMCB.loggingUartHandle)发送 header 以及 TLVs，然后发送 padding 使得 packet 长度为 MMWDEMO_OUTPUT_MSG_SEGMENT_LEN 的整数倍。最后，将成功处理信息写入信箱反馈给 DSS，写入失败则报错；如果消息类型为 MMWDEMO_DSS2MSS_ASSERT_INFO，则将 aseert 信息写入到 gSrrMSSMCB.commandUartHandle；
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+
+<div id="outline-container-org5fc0546" class="outline-4">
+<h4 id="org5fc0546"><span class="section-number-4">1.5.3</span> DSS 初始化流程</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-right">Priority</th>
+<th scope="col" class="org-left">Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">SRR_DSS_initTask</td>
+<td class="org-right">3</td>
+<td class="org-left">一次性初始化任务</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<ol class="org-ol">
+<li><a id="org669750e"></a>dss_main 入口点<br />
+<div class="outline-text-5" id="text-1-5-3-1">
+<ol class="org-ol">
+<li>初始化全局变量 <code>gSrrDSSMCB</code></li>
+<li>将所有数据通道对象(data path object) <code>gSrrDSSMCB.dataPathObj</code> 初始化为已知状态</li>
+<li>将 Chirp 配置导入到数据通道对象</li>
+<li>调用 <code>MMwDemo_dataPathInitEdma</code> 初始化 EDMA</li>
+<li>将 <b>某段</b> 与数据通道处理的代码从 L3 拷贝到 L1PSRAM，</li>
+<li>初始化 SOC 配置及模块并将句柄赋值给 <code>gSrrDSSMCB.socHandle</code></li>
+<li>创建 <code>SRR_DSS_initTask</code> 任务，优先级默认设置为 1</li>
+<li>调用 BIOS_start() API 接口函数执行调度</li>
+</ol>
+</div>
+</li>
+
+<li><a id="org1a2dafa"></a>SRR_DSS_initTask()<br />
+<div class="outline-text-5" id="text-1-5-3-2">
+<ol class="org-ol">
+<li>初始化 mmWave SDK 组件
+<ul class="org-ul">
+<li>初始化 mailbox</li>
+<li>初始化 ADC buffer</li>
+</ul></li>
+<li>注册中断向量，包括 Chirp 可用监听器(<code>gSrrDSSMCB.chirpIntHandle</code>)和帧开始监听器(<code>gSrrDSSMCB.frameStartIntHandle</code>)</li>
+<li>打开信箱，并将返回的句柄复制给 <code>gSrrDSSMCB.peerMailbox</code></li>
+<li>对每个 subframe 配置数据通道</li>
+<li>获取数据通道对象的句柄，对每个 subframe 配置 EDMA</li>
+<li>将 logging buffer 标记为可用</li>
+<li>创建 SRR_DSS_mmWaveTask 任务并设置优先级为 2，数据通道任务</li>
+</ol>
+</div>
+</li>
+
+<li><a id="orga338703"></a>SRR_DSS_mmWaveTask<br />
+<div class="outline-text-5" id="text-1-5-3-3">
+<p>
+在死循环中判断是否是以下三个事件之一：
+</p>
+<ol class="org-ol">
+<li>帧开始事件 ::
+<ul class="org-ul">
+<li>清空 <code>gSrrDSSMCB.frameStartIntToken</code> 标志位</li>
+<li>设定当前的 <b>数据通道对象</b></li>
+<li>断言上一帧完整地被处理完成，否则将错误信息传递给 MSS(<code>MmwDemo_dssAssert()</code>)</li>
+</ul></li>
+
+<li>chirp 事件 ::
+<ul class="org-ul">
+<li>将 gSrrDSSMCB.frameProcToken 标志位置 1</li>
+<li>MmwDemo_processChirp() 处理一个 chirp 数据
+<ul class="org-ul">
+<li>簿记时间戳</li>
+<li>verify if ping(or pong) buffer is free for odd(or even) chirps;不可用则等待一会</li>
+<li>调用 <code>MmwDemo_interChirpProcessing()</code> 进行 <b>距离维度</b> 处理</li>
+<li>根据 ping/pong 选择(修改)不同的 DMA 目标地址(1D-FFT output -&gt; L3)</li>
+<li>增加 <code>gSrrDSSMCB.chirpCount</code> 计数</li>
+<li>增加 <code>gSrrDSSMCB.txAntennaCount</code> 计数</li>
+<li>更新 txAntenna，dopplerBins 的计数值，同时判断当前子帧是否结束，若结束则将所有计数值 <b>清零</b>, 判断条件: txAntenna, dopplerBins, [chirpType]
+<ul class="org-ul">
+<li>对于 SRR80 数据通道: 1, 64, chirpType==2</li>
+<li>对于 USRR20 数据通道: 2, 32</li>
+</ul></li>
+</ul></li>
+<li><code>gSrrDSSMCB.chirpProcToken</code> 清零</li>
+<li>判断当前子帧是否结束，判断方法：若 Chirp 计数为零(chirpCount == 0),则当前子帧结束
+<ul class="org-ul">
+<li>等待 chirp 结束</li>
+<li><code>MmwDemo_interFrameProcessing()</code> 处理完整一帧数据</li>
+<li><code>SRR_DSS_DataPathOutputLogging()</code> 将结果(检测到的物体)发送到 MSS 的 logging UART
+<ul class="org-ul">
+<li>若 logging buffer 不可用，则等待一小会来自 MSS 的信息，然后检测状态并调用 <code>MmwDemo_mboxReadProc()</code>, 来处理来自 MSS 的信息，这是因为 <code>gSrrDSSMCB.loggingBufferAvailable</code> 标志位可以在该函数中标记置为 <b>可用</b></li>
+<li>若 logging buffer 可用，则通过将 <code>gSrrDSSMCB.loggingBufferAvailable</code> 置零标记为 <b>不可用</b> ，;若 logging buffer <b>仍然</b> 不可用，则跳过将检测到的物体保存到 logging buffer 继而进行下一阵处理。</li>
+</ul></li>
+<li>更新子帧的索引值，为处理新的一帧准备好 <b>数据通道对象</b></li>
+</ul></li>
+<li>将 gSrrDSSMCB.frameProcToken 标志位清零</li>
+</ul></li>
+
+<li>信箱事件 ::
+<ul class="org-ul">
+<li>将 <code>gSrrDSSMCB.mboxProcToken</code> 标志位清零</li>
+<li>阻塞等待信箱信息到来(MSS-&gt;DSS)，分为三种情况
+<dl class="org-dl">
+<dt>retVal&lt;0</dt><dd>出错</dd>
+<dt>retVal</dt><dd>无信息到来，直接返回</dd>
+<dt>retVal&gt;0</dt><dd>Flush mailbox 的内容，表示已经完成信息的读取，允许处理信息的同时接收下一条信息
+<ul class="org-ul">
+<li>若消息类型为 <code>MMWDEMO_MSS2DSS_DETOBJ_SHIPPED</code>, 计算 <b>已经发送</b> 帧所使用的时间，然后将 <code>gSrrDSSMCB.loggingBufferAvailable</code> 标志位置 1 表示可以向 MSS 发送帧处理结果(检测到的物体)</li>
+<li>若为其他消息类型，则通过 <code>MmwDemo_dssAssert()</code> 报错</li>
+</ul></dd>
+</dl></li>
+</ul></li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+swru552b_IWR16xx_14xx Industrial Radar Family Technical Reference Manual (Rev. B).pdf
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+mmwave_sdk_user_guide.pdf(Document Version 1.0) P39
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+<code>ti/utils/cli/cli.h</code> 以及 <code>ti/utils/cli/src/cli.c</code>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+<code>ti/control/mmwave/mmwave.h</code> 以及 <code>ti/control/mmwave/src/mmwave.c</code>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: kristoffer</p>
+<p class="date">Created: 2018-07-08 日 21:50</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

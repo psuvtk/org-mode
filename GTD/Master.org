@@ -1,0 +1,15 @@
+#+AUTHOR Kristoffer Song
+#+EMAIL psuvtk@gmail.com
+#+STARTUP: showeverything
+#+STARTUP: hidestars
+#+STARTUP: indent
+
+* Master
+
+** 2018 年
+
+*** 毫米波雷达相关
+*** DONE 人员计数实验（毫米波）                               :lab:ARCHIVE:
+    CLOSED: [2018-06-25 一 10:03] DEADLINE: <2018-06-23 六>
+    - State "DONE"       from "TODO"       [2018-06-25 一 10:03]
+    - State "TODO"       from              [2018-06-17 日 12:36]

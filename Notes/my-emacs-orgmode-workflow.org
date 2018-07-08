@@ -1,0 +1,49 @@
+
+
+* 我的 Emacs orgmode 工作流
+
+** GTD 流程
+ - Inbox.org :: 所有添加的任务以 *WAIT* 或者 *TODO* （立刻 refile 到 Task.org）进入到这里，或者来自 Tasks.org 等滞后但不取消的任务。
+ - Tasks.org :: 接下来要做的事情以 *TODO* 进入这里
+ - Archive.org :: 完成的琐碎任务以 *DONE* 进入这里
+ - Trash.org :: 取消的任务以 *CANCELED* 进入这里
+ - Master.org :: 完成的学位相关的任务以 *DONE* 进入这里
+ - Future.org :: 未来长期的以 *Future* 进入这里　
+ -
+
+
+| 状态     | 完成状态 | 说明               | 回顾周期 |
+|----------+----------+--------------------+----------|
+| PENDING  |          | 新添加未规划的任务 |          |
+| TODO     |          | 接下来要做的事情   |          |
+| AGENT    |          | 紧急事物           |          |
+| DONE     | 是       | 已经完成的任务     |          |
+| CANCELED | 是       | 取消的任务         |          |
+
+
+
+#+BEGIN_SRC lisp
+  (setq org-todo-keywords
+        '((sequence "TODO(t@/!)" "AGENT(g@/!)" "WAIT(w@/!)" "FUTURE(f/!)" "|" "SCHEDULED(!)" "DONE(d@/!)" "CANCELED(c@/!)")))
+  (setq org-todo-keyword-faces
+        '(("TODO" . org-warning)
+          ("AGENT" . "red")
+          ("FUTURE" . "purple")
+          ("CANCELED" . "gray")))
+
+  (setq org-agenda-files (list "~/Repos/org-mode/GTD/Archive.org"
+                               "~/Repos/org-mode/GTD/Tasks.org"
+                               "~/Repos/org-mode/GTD/Master.org"
+                               "~/Repos/org-mode/GTD/Trash.org"))
+
+  (setq org-refile-targets
+        '((nil :maxlevel . 3)
+          (org-agenda-files :maxlevel . 3)
+          ))
+  (setq org-refile-use-outline-path 'file)
+  ;; makes org-refile outline working with helm/ivy
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
+#+END_SRC
+
+归档的文件 `C-c C-x C-a` 命令使其不再显示在 agenda-view 中。
