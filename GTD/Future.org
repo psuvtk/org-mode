@@ -1,7 +1,0 @@
-#+AUTHOR Kristoffer Song
-#+EMAIL psuvtk@gmail.com
-#+STARTUP: showeverything
-#+TAGS: @lab
-
-
-* Furtue 未来的打算

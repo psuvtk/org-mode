@@ -6,11 +6,16 @@
 
 
 * Inbox
-** Periodic
+** LongTerm Ideas
 *** PENGDING 学习 Elixir Nerves                                      :learn:
 - State "PENGDING"   from              [2018-06-18 一 15:09]
+*** PENGDING 毕业需要一片专利或者论文
+- State "PENGDING"   from              [2018-07-15 日 10:22]
 *** 阅读学习《视觉 SLAM 十四讲：从理论到实践》
-** New
+*** 购置单反相机
+尼康 D610
+*** 学习德语
+** New Stuff
 
 *** PENGDING 数据结构学习-优先队列 :personal:
     - State "PENGDING"   from              [2018-06-17 日 21:23]
@@ -18,4 +23,11 @@
     - State "PENGDING"   from              [2018-06-17 日 21:23]
 *** PENGDING UWB P440 实现机器人定位 :lab:
     - State "PENGDING"   from              [2018-06-17 日 21:24]
-** Misc
+*** PENGDING 商业计划书-无人驾驶
+- State "PENGDING"   from              [2018-07-10 二 21:03]
+*** PENGDING 整理冯翔留下的资料
+- State "PENGDING"   from              [2018-07-16 一 11:21]
+*** PENGDING 寄快递回家
+内裤，剃须啫喱
+- State "PENGDING"   from              [2018-07-16 一 11:21]
+* Reference

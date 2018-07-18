@@ -1,0 +1,45 @@
+#+AUTHOR Kristoffer Song
+#+EMAIL psuvtk@gmail.com
+#+STARTUP: indent
+#+STARTUP: showeverything
+#+STARTUP: hidestars
+
+** Project
+*** TODO 去中国工商银行预约、预约兑换、兑换高铁币
+SCHEDULED: <2018-07-16 一>
+- State "TODO"       from "PENGDING"   [2018-07-16 一 11:28]
+- State "PENGDING"   from              [2018-07-16 一 11:16]
+
+- [] 预约  <2018-07-19>--<2018-07-22>
+- [] 预约兑换 <2018-09-03>--<2018-09-12>
+- [] 兑换 <2018-08-18>--<2018-09-25>
+Note: 带上身份证
+
+*** TODO [#A] Ti mmWaveRadar 嵌入式程序相关                           :lab:
+SCHEDULED: <2018-07-16 一>
+- State "TODO"       from "PENGDING"   [2018-07-16 一 14:26]
+- State "PENGDING"   from              [2018-07-16 一 13:54]
+子任务:
+- [] MSS 工作流程、通信的方式并记录文档
+- [] CLI 命令接收，为什么第二次会出错
+- [] EDMA 的工作方式
+- [] 各个阶段实际的内存模型(与文档歧义的地方)，并使用 Visio 画出示意图
+- [] 各个阶段的算法(理论以及实现)
+- [] 思考哪些地方可以哪些地方无法修改，以实现自己的项目
+** Agenda/Scheduled
+*** TODO 阅读无人驾驶开源项目并总结                                   :lab:
+DEADLINE: <2018-07-31 二>
+- State "TODO"       from "PENGDING"   [2018-06-30 六 15:32]
+- State "PENGDING"   from              [2018-06-30 六 15:30]
+总结能实际应用的开源无人驾驶项目，有可能公司根据这个招人
+
+*** TODO 阅读《城市作战陆战平台智能感知系统》，总结关键技术
+DEADLINE: <2018-07-31 二>
+- State "TODO"       from              [2018-07-03 二 09:24]
+** Next
+
+*** TODO 给尾号 5080 的银行卡开通工行信使服务
+- State "TODO"       from              [2018-07-17 二 09:36]
+** Waiting
+
+** Someday

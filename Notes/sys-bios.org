@@ -32,7 +32,7 @@
 
 
 *** startup
-（这里有个图片）
+[[./figs/system_startup.png]]
 
 
 
@@ -43,7 +43,7 @@
 | Task's Name             | Functionality                                                                                                                                           |
 |-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | MmwDemo_mssInitTask     | 一次性初始化任务                                                                                                                                        |
-| MmwDemo_mmWaveCtrlTask  | 为 mmWave 控制提供执行的上下文，无限循环执行 MMWave_execute 接口函数                                                                                    |
+| MmwDemo_mmWaveCtrlTask  | 为 mmWave 控制提供执行的上下文，无限循环执行 MMWave_execute() 接口函数                                                                                |
 | MmwDemo_mssCtrlPathTask | 处理来自 CLI_Task 的 data path events 或者 EVM 上的 SOC_XWR16XX_GPIO_1 按钮，并将 start/stop 完成事件反馈给 CLI_Task                                    |
 | CLI_task                | 接收用户命令以及发送事件给 MmwDemo_mssCtrlPathTask，对于 start/stop 命令，等待来自 MmwDemo_mssCtrlPathTask 的完成事件；若成功则点亮 SOC_XWR16XX_GPIO_2. |
 | MmwDemo_mboxReadTask    | 　处理从信箱接收到来自 DSS 的信息                                                                                                                       |
@@ -58,14 +58,6 @@
 | MmwDemo_mboxReadTask      | 处理从信箱接收到的来自 MSS 的信息 |
 | MmwDemo_dssMMWaveCtrlTask | 为 mmWave control 提供执行的上下文，在无限循环中执行 MMWave_execute 接口函数 |
 | MmwDemo_dssDataPathTask   |                                 |
-
-
-
-
-*** 一些初始化
-|          |                                                                                                                                                                                     |
-|----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Soc_init | initialize and setup the SOC Driver. If the system clock configuration is initialized then the function will unhalt the BSS and will wait until the APLL calibiration is completed. |
 
 
 *** ADC buffer
@@ -212,21 +204,8 @@ typedef struct Task_Params {
 } Task_Params;
 #+END_SRC
 
-** Data Path
-*** 概览
-1. Processing during chirps
-   - 1D(range)-FFT that takes input from multile tx from *ADC buffer*
-   - transfer output into *L3 RAM* by EDMA
-2. Processing during time between the end of chirps until the beggening of the next chirping period
-   - 2D(velosity)-FFT that read input from 1D output in L3RAM in a transpose manner(using EDMA) and perform FFT to give a (range,velosity) matrix in the RAM. the process also includes the *CFAR* detection in Doppler direction.
-   - CFAR detection in range direction using mmWave library
-   - Peak Group if enabled
-   - Direction of Arrival(Azimuth) Estimation.
-
-*** 非交叉存取模式(Non-Interleaved Mode, AWR16xx Mode)
 
 
-***
 ** 人员计数
 *** Tasks
 | Task's Name             | Priority | Function |
@@ -294,20 +273,26 @@ Detail: =/opt/ti/mmwave_sdk_02_00_00_04/packages/ti/demo/xwr16xx/mmw= 文件夹�
 | output to R4F           |               |                   |
 
 
+|           |                  |                     |
+|-----------+------------------+---------------------|
+| adcDataIn | 2 * numRangeBins | ping pong           |
+| fftOut1D  | 8 * numRangeBins | ping/pong & Rx1~Rx4 |
+|        |                  |                     |
+
+
 Detail: 参考 =mmwave_sdk_<ver>\packages\ti\demo\xwr16xx\mmw\docs\doxygen\html\index.html= 提供的文档了解更多 data Path 中每个单独块的更多细节
 
 ** SRR 短距雷达
 
 *** 前端相关
-SRR80:
-- 1 profile
-- 2 chirp -> 64 times per chirp
-- 1 Tx Antenna -> No MIMO
-
-USRR20:
-- 1 profile
-- 2 chirp -> TDM-MIMO
-- 2Tx & 4Rx -> MIMO
+|                   | SRR80 | USRR20 |
+|-------------------+-------+--------|
+| subframeIndex     |     0 |      1 |
+| profile           |     1 |      1 |
+| chirpPerChirpType |    64 |     32 |
+| Tx Antenna        |     1 |      2 |
+| numRangeBins      |   256 |    512 |
+| numDopplerBins    |    64 |     32 |
 
 *** MSS 流程
 | Task 名称              |    优先级 | 任务功能                       |
@@ -357,10 +342,11 @@ USRR20:
 
 
 *** DSS 初始化流程
-| Task             | Priority | Functionality    |
-|------------------+----------+------------------|
-| SRR_DSS_initTask |        3 | 一次性初始化任务 |
-|                  |          |                  |
+| Task               | Priority | Functionality                   |
+|--------------------+----------+---------------------------------|
+| SRR_DSS_initTask   |        1 | 一次性初始化任务                |
+| SRR_DSS_mmWaveTask |        2 | 监听 chirp 到来、帧开始、信箱事件 |
+|                    |          |                                 |
 
 **** dss_main 入口点
 1. 初始化全局变量 =gSrrDSSMCB=
@@ -420,3 +406,33 @@ USRR20:
      * retVal>0 :: Flush mailbox 的内容，表示已经完成信息的读取，允许处理信息的同时接收下一条信息
        - 若消息类型为 =MMWDEMO_MSS2DSS_DETOBJ_SHIPPED=, 计算 *已经发送* 帧所使用的时间，然后将 =gSrrDSSMCB.loggingBufferAvailable= 标志位置 1 表示可以向 MSS 发送帧处理结果(检测到的物体)
        - 若为其他消息类型，则通过 =MmwDemo_dssAssert()= 报错
+
+**** TODO 搞清楚 EDMA 的几种类型 以及 radarcude(L3RAM)内存模型
+- State "TODO"       from              [2018-07-10 二 21:06]
+-
+
+*** EDMA 传输类型
+EDMA 传输总是以三维来定义：
+| 维度            | 组成                 |
+|-----------------+----------------------|
+| 第一维或阵列(A) | 由 ACNT 个连续字节组成 |
+| 第二维或帧(B)   | 由 BCNT 个阵列(A)组成  |
+| 第三维或块(C)   | 由 CCNT 个帧(B)组成    |
+A-同步传输
+AB-同步传输
+
+** Data Path
+*** 概览
+1. Processing during chirps
+   - 1D(range)-FFT that takes input from multile tx from *ADC buffer*
+   - transfer output into *L3 RAM* by EDMA
+2. Processing during time between the end of chirps until the beggening of the next chirping period
+   - 2D(velosity)-FFT that read input from 1D output in L3RAM in a transpose manner(using EDMA) and perform FFT to give a (range,velosity) matrix in the RAM. the process also includes the *CFAR* detection in Doppler direction.
+   - CFAR detection in range direction using mmWave library
+   - Peak Group if enabled
+   - Direction of Arrival(Azimuth) Estimation.
+
+*** 非交叉存取模式(Non-Interleaved Mode, AWR16xx Mode)
+
+*** 前端->
+每到来两个 chirp 产生一个 chirp 中断

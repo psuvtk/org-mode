@@ -5,10 +5,6 @@
 #+STARTUP: hidestars
 
 * Archive
-
-** Periodic
-
-
 ** 2018 年
 
 *** DONE 帮 m&m 完善金融小程序 :ARCHIVE:
@@ -79,10 +75,50 @@ CLOSED: [2018-07-01 日 09:16] DEADLINE: <2018-06-30 六>
 - State "DONE"       from "DONE"       [2018-07-01 日 09:16] \\
   文档待后期再整理
 - State "TODO"       from              [2018-06-17 日 12:41]
-*** DONE 拿去修电脑键盘                                          :personal:
+*** DONE 拿去修电脑键盘                                          :personal:ARCHIVE:
 CLOSED: [2018-07-06 五 16:17] DEADLINE: <2018-07-07 六>
 - State "DONE"       from "TODO"       [2018-07-06 五 16:17] \\
   花费 450 元
 等实验室台式机到了，拿去修键盘
 如果吹风机搞不好，需要大约 200 元更换新的键盘
 - State "TODO"       from              [2018-06-29 五 16:43]
+*** DONE 走廊人员追踪实验（毫米波）                                   :lab:ARCHIVE:
+CLOSED: [2018-07-13 五 10:29] DEADLINE: <2018-07-07 六>
+
+- State "DONE"       from "TODO"       [2018-07-13 五 10:29] \\
+  不够完善，需要调整参数使得范围达到 14m
+  是不是因为多径效应导致信噪比降低？
+- State "TODO"       from              [2018-06-17 日 12:39]
+*** DONE 报销发票                                                 :ARCHIVE:
+CLOSED: [2018-07-16 一 11:24]
+- State "DONE"       from "PENGDING"   [2018-07-16 一 11:24]
+工控机、开发板、USB 线材
+- State "PENGDING"   from              [2018-07-16 一 11:13]
+*** DONE 扫描证书并归档                                           :ARCHIVE:
+CLOSED: [2018-07-16 一 13:11]
+- State "DONE"       from "TODO"       [2018-07-16 一 13:11]
+- State "TODO"       from "PENGDING"   [2018-07-16 一 13:11]
+- State "PENGDING"   from              [2018-07-16 一 13:11]
+*** DONE 计算并调整中厅人员计数演示的雷达角度                     :ARCHIVE:
+CLOSED: [2018-07-16 一 13:53]
+- State "DONE"       from "TODO"       [2018-07-16 一 13:53]
+- State "TODO"       from "PENGDING"   [2018-07-16 一 11:23]
+- State "PENGDING"   from              [2018-07-16 一 11:23]
+*** DONE 给狗菲买零食                                             :ARCHIVE:
+CLOSED: [2018-07-16 一 21:51]
+- State "DONE"       from "TODO"       [2018-07-16 一 21:51]
+- State "TODO"       from "PENGDING"   [2018-07-16 一 13:10]
+- State "PENGDING"   from              [2018-07-16 一 11:24]
+* Trash
+
+** 2018 年
+*** CANCELED 申请提前搬入研究生宿舍                      :personal:ARCHIVE:
+CLOSED: [2018-06-20 三 20:20] DEADLINE: <2018-06-28 四>
+- State "CANCELED"   from "PENGDING"   [2018-06-20 三 20:20]
+- State "PENGDING"   from              [2018-06-18 一 15:08]
+***
+*** CANCELED 整明白下位机的内存模型                           :lab:ARCHIVE:
+CLOSED: [2018-07-16 一 11:35] DEADLINE: <2018-07-20 五> SCHEDULED: <2018-07-13 五>
+- State "CANCELED"   from "TODO"       [2018-07-16 一 11:35]
+- State "TODO"       from              [2018-07-13 五 14:51]
+EDMA 做了什么？弄不明白这个就不用想自己写程序了

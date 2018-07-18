@@ -2,4 +2,8 @@
 ** 7 月
 *** 8 日
 1. 看<The Essence of linear algebra>并记笔记
-*** 9日
+*** 9 日
+1. 注释 MmwDemo_interChirpProcessing() 函数
+*** 14 日
+1. 录制机器人运动视频，并制作画中画
+2.

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-07-08 日 21:50 -->
+<!-- 2018-07-10 二 21:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -233,43 +233,43 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org27323e0">1. SYS/BIOS</a>
+<li><a href="#orgbbd6e1a">1. SYS/BIOS</a>
 <ul>
-<li><a href="#org9fb33cf">1.1. IWR1642 笔记</a>
+<li><a href="#org7c4bdda">1.1. IWR1642 笔记</a>
 <ul>
-<li><a href="#org2f15cce">1.1.1. startup</a></li>
-<li><a href="#org18d6174">1.1.2. Software Tasks on MSS</a></li>
-<li><a href="#org1d2141e">1.1.3. Software Task on DSS</a></li>
-<li><a href="#orgd206d5c">1.1.4. 一些初始化</a></li>
-<li><a href="#orge45bb11">1.1.5. ADC buffer</a></li>
-<li><a href="#org0a6602b">1.1.6. FFT</a></li>
-<li><a href="#orgfe08c56">1.1.7. Mainlbox</a></li>
-<li><a href="#orga0be0bd">1.1.8. Programmer view of DSP Subsystem</a></li>
-<li><a href="#orgfca0503">1.1.9. Main Datastructure</a></li>
-<li><a href="#org74ab559">1.1.10. Task_Params 结构体</a></li>
+<li><a href="#orgb659928">1.1.1. startup</a></li>
+<li><a href="#org41ba33f">1.1.2. Software Tasks on MSS</a></li>
+<li><a href="#org0a738f5">1.1.3. Software Task on DSS</a></li>
+<li><a href="#orgabc3f9f">1.1.4. 一些初始化</a></li>
+<li><a href="#org263b9b3">1.1.5. ADC buffer</a></li>
+<li><a href="#org4221ccd">1.1.6. FFT</a></li>
+<li><a href="#org921df20">1.1.7. Mainlbox</a></li>
+<li><a href="#org2709fdb">1.1.8. Programmer view of DSP Subsystem</a></li>
+<li><a href="#orgc496962">1.1.9. Main Datastructure</a></li>
+<li><a href="#org6183d4f">1.1.10. Task_Params 结构体</a></li>
 </ul>
 </li>
-<li><a href="#orgeefcb59">1.2. Data Path</a>
+<li><a href="#orgb99ddfd">1.2. Data Path</a>
 <ul>
-<li><a href="#org2a6f97b">1.2.1. 概览</a></li>
-<li><a href="#org07b4288">1.2.2. 非交叉存取模式(Non-Interleaved Mode, AWR16xx Mode)</a></li>
+<li><a href="#org35eb2f8">1.2.1. 概览</a></li>
+<li><a href="#org1a5802c">1.2.2. 非交叉存取模式(Non-Interleaved Mode, AWR16xx Mode)</a></li>
 </ul>
 </li>
-<li><a href="#org0b26095">1.3. 人员计数</a>
+<li><a href="#orgfb0d604">1.3. 人员计数</a>
 <ul>
-<li><a href="#orgc5de716">1.3.1. Tasks</a></li>
+<li><a href="#orgadc0c4c">1.3.1. Tasks</a></li>
 </ul>
 </li>
-<li><a href="#org96c531a">1.4. xWR16xx</a>
+<li><a href="#orgb79f218">1.4. xWR16xx</a>
 <ul>
-<li><a href="#org0cacc9d">1.4.1. 典型的毫米波雷达处理链</a></li>
+<li><a href="#orgd28d535">1.4.1. 典型的毫米波雷达处理链</a></li>
 </ul>
 </li>
-<li><a href="#orgf0b788c">1.5. SRR 短距雷达</a>
+<li><a href="#org80a33bd">1.5. SRR 短距雷达</a>
 <ul>
-<li><a href="#orgbcb97a1">1.5.1. 前端相关</a></li>
-<li><a href="#org8b45bd6">1.5.2. MSS 流程</a></li>
-<li><a href="#org5fc0546">1.5.3. DSS 初始化流程</a></li>
+<li><a href="#org68c7bd3">1.5.1. 前端相关</a></li>
+<li><a href="#org5861a17">1.5.2. MSS 流程</a></li>
+<li><a href="#org8109f88">1.5.3. DSS 初始化流程</a></li>
 </ul>
 </li>
 </ul>
@@ -279,16 +279,16 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-org27323e0" class="outline-2">
-<h2 id="org27323e0"><span class="section-number-2">1</span> SYS/BIOS</h2>
+<div id="outline-container-orgbbd6e1a" class="outline-2">
+<h2 id="orgbbd6e1a"><span class="section-number-2">1</span> SYS/BIOS</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org9fb33cf" class="outline-3">
-<h3 id="org9fb33cf"><span class="section-number-3">1.1</span> IWR1642 笔记</h3>
+<div id="outline-container-org7c4bdda" class="outline-3">
+<h3 id="org7c4bdda"><span class="section-number-3">1.1</span> IWR1642 笔记</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="orgf5c873e"></a>Terminology 术语：<br />
+<li><a id="org8eee299"></a>Terminology 术语：<br />
 <div class="outline-text-5" id="text-1-1-0-1">
 <dl class="org-dl">
 <dt>MSS</dt><dd>Master Subsystem</dd>
@@ -301,7 +301,7 @@ for the JavaScript code in this tag.
 </div>
 </li>
 
-<li><a id="org92b1243"></a>cheat-sheet<br />
+<li><a id="orga8b764b"></a>cheat-sheet<br />
 <div class="outline-text-5" id="text-1-1-0-2">
 <dl class="org-dl">
 <dt>pingpong</dt><dd>一种缓存手段，使用多个低速的数据预处理模块处理高速的输入数据流。这样做可以提高系统的数据吞吐量</dd>
@@ -310,7 +310,7 @@ for the JavaScript code in this tag.
 </li>
 
 
-<li><a id="org8dd54c4"></a>MIMO Radar 调制方式<br />
+<li><a id="org3fb16ca"></a>MIMO Radar 调制方式<br />
 <div class="outline-text-5" id="text-1-1-0-3">
 <ul class="org-ul">
 <li>TDM-MIMO: 简单，但是不能充分利用设备的发送能力</li>
@@ -320,7 +320,7 @@ for the JavaScript code in this tag.
 </li>
 
 
-<li><a id="orgd22b138"></a>TX 信号配置<br />
+<li><a id="org56381aa"></a>TX 信号配置<br />
 <div class="outline-text-5" id="text-1-1-0-4">
 <p>
 三个概念：
@@ -335,11 +335,12 @@ for the JavaScript code in this tag.
 </ol>
 
 
-<div id="outline-container-org2f15cce" class="outline-4">
-<h4 id="org2f15cce"><span class="section-number-4">1.1.1</span> startup</h4>
+<div id="outline-container-orgb659928" class="outline-4">
+<h4 id="orgb659928"><span class="section-number-4">1.1.1</span> startup</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 （这里有个图片）
+<img src="./figs/system_startup.png" alt="system_startup.png" />
 </p>
 </div>
 </div>
@@ -349,8 +350,8 @@ for the JavaScript code in this tag.
 
 
 
-<div id="outline-container-org18d6174" class="outline-4">
-<h4 id="org18d6174"><span class="section-number-4">1.1.2</span> Software Tasks on MSS</h4>
+<div id="outline-container-org41ba33f" class="outline-4">
+<h4 id="org41ba33f"><span class="section-number-4">1.1.2</span> Software Tasks on MSS</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -374,7 +375,7 @@ for the JavaScript code in this tag.
 
 <tr>
 <td class="org-left">MmwDemo_mmWaveCtrlTask</td>
-<td class="org-left">为 mmWave 控制提供执行的上下文，无限循环执行 MMWave_execute 接口函数</td>
+<td class="org-left">为 mmWave 控制提供执行的上下文，无限循环执行 MMWave_execute() 接口函数</td>
 </tr>
 
 <tr>
@@ -403,8 +404,8 @@ for the JavaScript code in this tag.
 
 
 
-<div id="outline-container-org1d2141e" class="outline-4">
-<h4 id="org1d2141e"><span class="section-number-4">1.1.3</span> Software Task on DSS</h4>
+<div id="outline-container-org0a738f5" class="outline-4">
+<h4 id="org0a738f5"><span class="section-number-4">1.1.3</span> Software Task on DSS</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -448,8 +449,8 @@ for the JavaScript code in this tag.
 
 
 
-<div id="outline-container-orgd206d5c" class="outline-4">
-<h4 id="orgd206d5c"><span class="section-number-4">1.1.4</span> 一些初始化</h4>
+<div id="outline-container-orgabc3f9f" class="outline-4">
+<h4 id="orgabc3f9f"><span class="section-number-4">1.1.4</span> 一些初始化</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -476,8 +477,8 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-orge45bb11" class="outline-4">
-<h4 id="orge45bb11"><span class="section-number-4">1.1.5</span> ADC buffer</h4>
+<div id="outline-container-org263b9b3" class="outline-4">
+<h4 id="org263b9b3"><span class="section-number-4">1.1.5</span> ADC buffer</h4>
 <div class="outline-text-4" id="text-1-1-5">
 <p>
 ping-pong 机制 双缓冲，The ADC buffer is implemented as a double buffering (ping-pong) mechanism that allows for one buffer to
@@ -495,8 +496,8 @@ The size of the ADC buffer is:
 </div>
 
 
-<div id="outline-container-org0a6602b" class="outline-4">
-<h4 id="org0a6602b"><span class="section-number-4">1.1.6</span> FFT</h4>
+<div id="outline-container-org4221ccd" class="outline-4">
+<h4 id="org4221ccd"><span class="section-number-4">1.1.6</span> FFT</h4>
 <div class="outline-text-4" id="text-1-1-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -533,8 +534,8 @@ The size of the ADC buffer is:
 </div>
 
 
-<div id="outline-container-orgfe08c56" class="outline-4">
-<h4 id="orgfe08c56"><span class="section-number-4">1.1.7</span> Mainlbox</h4>
+<div id="outline-container-org921df20" class="outline-4">
+<h4 id="org921df20"><span class="section-number-4">1.1.7</span> Mainlbox</h4>
 <div class="outline-text-4" id="text-1-1-7">
 <p>
 信箱用于两个处理器之间 <b>异步地</b> 交换信息，每个处理器拥有 MailBox 内存空间以及寄存器(用于其他处理器与之通信)，每个处理器有 <b>两套</b> mailbox 内存空间和寄存器用于供其他处理器与之通信<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>。
@@ -576,8 +577,8 @@ MailBox Message Example( Message from DSS to MSS):
 </div>
 
 
-<div id="outline-container-orga0be0bd" class="outline-4">
-<h4 id="orga0be0bd"><span class="section-number-4">1.1.8</span> Programmer view of DSP Subsystem</h4>
+<div id="outline-container-org2709fdb" class="outline-4">
+<h4 id="org2709fdb"><span class="section-number-4">1.1.8</span> Programmer view of DSP Subsystem</h4>
 <div class="outline-text-4" id="text-1-1-8">
 <ol class="org-ol">
 <li>user <b>handshake RAM</b> share data between MSS and DSS, store final target list</li>
@@ -587,8 +588,8 @@ MailBox Message Example( Message from DSS to MSS):
 </div>
 </div>
 
-<div id="outline-container-orgfca0503" class="outline-4">
-<h4 id="orgfca0503"><span class="section-number-4">1.1.9</span> Main Datastructure</h4>
+<div id="outline-container-orgc496962" class="outline-4">
+<h4 id="orgc496962"><span class="section-number-4">1.1.9</span> Main Datastructure</h4>
 <div class="outline-text-4" id="text-1-1-9">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #036A07;">/**</span>
@@ -658,8 +659,8 @@ MailBox Message Example( Message from DSS to MSS):
 </div>
 </div>
 
-<div id="outline-container-org74ab559" class="outline-4">
-<h4 id="org74ab559"><span class="section-number-4">1.1.10</span> Task_Params 结构体</h4>
+<div id="outline-container-org6183d4f" class="outline-4">
+<h4 id="org6183d4f"><span class="section-number-4">1.1.10</span> Task_Params 结构体</h4>
 <div class="outline-text-4" id="text-1-1-10">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #0000FF;">typedef</span> <span style="color: #0000FF;">struct</span> <span style="color: #6434A3;">Task_Params</span> <span style="color: #707183;">{</span>
@@ -691,12 +692,12 @@ MailBox Message Example( Message from DSS to MSS):
 </div>
 </div>
 
-<div id="outline-container-orgeefcb59" class="outline-3">
-<h3 id="orgeefcb59"><span class="section-number-3">1.2</span> Data Path</h3>
+<div id="outline-container-orgb99ddfd" class="outline-3">
+<h3 id="orgb99ddfd"><span class="section-number-3">1.2</span> Data Path</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org2a6f97b" class="outline-4">
-<h4 id="org2a6f97b"><span class="section-number-4">1.2.1</span> 概览</h4>
+<div id="outline-container-org35eb2f8" class="outline-4">
+<h4 id="org35eb2f8"><span class="section-number-4">1.2.1</span> 概览</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ol class="org-ol">
 <li>Processing during chirps
@@ -715,8 +716,8 @@ MailBox Message Example( Message from DSS to MSS):
 </div>
 </div>
 
-<div id="outline-container-org07b4288" class="outline-4">
-<h4 id="org07b4288"><span class="section-number-4">1.2.2</span> 非交叉存取模式(Non-Interleaved Mode, AWR16xx Mode)</h4>
+<div id="outline-container-org1a5802c" class="outline-4">
+<h4 id="org1a5802c"><span class="section-number-4">1.2.2</span> 非交叉存取模式(Non-Interleaved Mode, AWR16xx Mode)</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 <b>*</b>
@@ -724,12 +725,12 @@ MailBox Message Example( Message from DSS to MSS):
 </div>
 </div>
 </div>
-<div id="outline-container-org0b26095" class="outline-3">
-<h3 id="org0b26095"><span class="section-number-3">1.3</span> 人员计数</h3>
+<div id="outline-container-orgfb0d604" class="outline-3">
+<h3 id="orgfb0d604"><span class="section-number-3">1.3</span> 人员计数</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-orgc5de716" class="outline-4">
-<h4 id="orgc5de716"><span class="section-number-4">1.3.1</span> Tasks</h4>
+<div id="outline-container-orgadc0c4c" class="outline-4">
+<h4 id="orgadc0c4c"><span class="section-number-4">1.3.1</span> Tasks</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -785,8 +786,8 @@ MailBox Message Example( Message from DSS to MSS):
 </div>
 
 
-<div id="outline-container-org96c531a" class="outline-3">
-<h3 id="org96c531a"><span class="section-number-3">1.4</span> xWR16xx</h3>
+<div id="outline-container-orgb79f218" class="outline-3">
+<h3 id="orgb79f218"><span class="section-number-3">1.4</span> xWR16xx</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 典型的 xWR16xx 应用将会进行如下:
@@ -808,8 +809,8 @@ MailBox Message Example( Message from DSS to MSS):
 </ul>
 </div>
 
-<div id="outline-container-org0cacc9d" class="outline-4">
-<h4 id="org0cacc9d"><span class="section-number-4">1.4.1</span> 典型的毫米波雷达处理链<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h4>
+<div id="outline-container-orgd28d535" class="outline-4">
+<h4 id="orgd28d535"><span class="section-number-4">1.4.1</span> 典型的毫米波雷达处理链<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 mmWave Front End -&gt; Radar data Capture -&gt; Range FFT -&gt; L3 memory -&gt; Doppler FFT -&gt; L3 memory -&gt; Detection(non-coherent) -&gt; Angle Estimation -&gt;
@@ -929,7 +930,7 @@ Detail: <code>/opt/ti/mmwave_sdk_02_00_00_04/packages/ti/demo/xwr16xx/mmw</code>
 </div>
 
 <ol class="org-ol">
-<li><a id="org759ec16"></a>data path xWR16xx<br />
+<li><a id="org7f4d8b0"></a>data path xWR16xx<br />
 <div class="outline-text-5" id="text-1-4-1-1">
 <p>
 对于 xWR16xx，control path 能够单独运行在 MSS 上，单独运行在 DSS 上或者协作模式(co-operative, <b>初始化(init)</b> 以及 <b>配置(config)</b> 由 MSS 发起进行； <b>开始(start)</b> 由 DSS 在 data path 配置完成后发起进行)。mmWave 单元测试中提供了对 <b>三种</b> 模式的示例实现。
@@ -938,7 +939,7 @@ Detail: <code>/opt/ti/mmwave_sdk_02_00_00_04/packages/ti/demo/xwr16xx/mmw</code>
 </li>
 
 
-<li><a id="orgd7df5ef"></a>data path xWR16xx<br />
+<li><a id="org12e9c3b"></a>data path xWR16xx<br />
 <div class="outline-text-5" id="text-1-4-1-2">
 <p>
 上述雷达处理链中的 data path 主要运行于 DSS(C674x)
@@ -1018,6 +1019,45 @@ Detail: <code>/opt/ti/mmwave_sdk_02_00_00_04/packages/ti/demo/xwr16xx/mmw</code>
 </table>
 
 
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">adcDataIn</td>
+<td class="org-left">2 * numRangeBins</td>
+<td class="org-left">ping pong</td>
+</tr>
+
+<tr>
+<td class="org-left">fftOut1D</td>
+<td class="org-left">8 * numRangeBins</td>
+<td class="org-left">ping/pong &amp; Rx1~Rx4</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
 <p>
 Detail: 参考 <code>mmwave_sdk_&lt;ver&gt;\packages\ti\demo\xwr16xx\mmw\docs\doxygen\html\index.html</code> 提供的文档了解更多 data Path 中每个单独块的更多细节
 </p>
@@ -1027,12 +1067,12 @@ Detail: 参考 <code>mmwave_sdk_&lt;ver&gt;\packages\ti\demo\xwr16xx\mmw\docs\do
 </div>
 </div>
 
-<div id="outline-container-orgf0b788c" class="outline-3">
-<h3 id="orgf0b788c"><span class="section-number-3">1.5</span> SRR 短距雷达</h3>
+<div id="outline-container-org80a33bd" class="outline-3">
+<h3 id="org80a33bd"><span class="section-number-3">1.5</span> SRR 短距雷达</h3>
 <div class="outline-text-3" id="text-1-5">
 </div>
-<div id="outline-container-orgbcb97a1" class="outline-4">
-<h4 id="orgbcb97a1"><span class="section-number-4">1.5.1</span> 前端相关</h4>
+<div id="outline-container-org68c7bd3" class="outline-4">
+<h4 id="org68c7bd3"><span class="section-number-4">1.5.1</span> 前端相关</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
 SRR80:
@@ -1054,8 +1094,8 @@ USRR20:
 </div>
 </div>
 
-<div id="outline-container-org8b45bd6" class="outline-4">
-<h4 id="org8b45bd6"><span class="section-number-4">1.5.2</span> MSS 流程</h4>
+<div id="outline-container-org5861a17" class="outline-4">
+<h4 id="org5861a17"><span class="section-number-4">1.5.2</span> MSS 流程</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1103,7 +1143,7 @@ USRR20:
 </div>
 
 <ol class="org-ol">
-<li><a id="orgfbd41d9"></a>mss_main 入口点<br />
+<li><a id="org021b4e7"></a>mss_main 入口点<br />
 <div class="outline-text-5" id="text-1-5-2-1">
 <ol class="org-ol">
 <li>初始化全局变量 <code>gSrrMSSMCB</code></li>
@@ -1114,7 +1154,7 @@ USRR20:
 </div>
 </li>
 
-<li><a id="org80cf235"></a>SRR_MSS_initTask:<br />
+<li><a id="orgb4bc63b"></a>SRR_MSS_initTask:<br />
 <div class="outline-text-5" id="text-1-5-2-2">
 <ol class="org-ol">
 <li>初始化 SDK 组件
@@ -1145,7 +1185,7 @@ USRR20:
 </div>
 </li>
 
-<li><a id="org2dcc701"></a>CLI_Task<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>:<br />
+<li><a id="orge154b53"></a>CLI_Task<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>:<br />
 <div class="outline-text-5" id="text-1-5-2-3">
 <p>
 这个任务应该没有使用同步原语，循环等待 UART(gSrrMSSMCB.commandUartHandl) 端口数据。如果匹配，则执行相应的回调函数；否则报错。
@@ -1153,7 +1193,7 @@ USRR20:
 </div>
 </li>
 
-<li><a id="orgc7a8a68"></a>SRR_MSS_mmWaveCtrlTask<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>:<br />
+<li><a id="orgd51a3cb"></a>SRR_MSS_mmWaveCtrlTask<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>:<br />
 <div class="outline-text-5" id="text-1-5-2-4">
 <p>
 文档：=<a href="file:///opt/ti/mmwave_sdk_02_00_00_04/packages/ti/control/mmwave/docs/doxygen/html/index.html">file:///opt/ti/mmwave_sdk_02_00_00_04/packages/ti/control/mmwave/docs/doxygen/html/index.html</a>=
@@ -1161,7 +1201,7 @@ USRR20:
 </div>
 </li>
 
-<li><a id="org999cead"></a>MmwDemo_mboxReadTask(4):<br />
+<li><a id="org836c656"></a>MmwDemo_mboxReadTask(4):<br />
 <div class="outline-text-5" id="text-1-5-2-5">
 <p>
 使用 semphore 同步原语(gSrrMSSMCB.mboxSemHandle)，阻塞直到信箱(peerMailbox)有消息到来。读取信箱信息，如果成功，则 flush 掉信箱的信息以允许新的信息写入信箱；否则报错。判断消息类型，如果消息类型为 MMWDEMO_DSS2MSS_DETOBJ_READY，则通过 UART(gSrrMSSMCB.loggingUartHandle)发送 header 以及 TLVs，然后发送 padding 使得 packet 长度为 MMWDEMO_OUTPUT_MSG_SEGMENT_LEN 的整数倍。最后，将成功处理信息写入信箱反馈给 DSS，写入失败则报错；如果消息类型为 MMWDEMO_DSS2MSS_ASSERT_INFO，则将 aseert 信息写入到 gSrrMSSMCB.commandUartHandle；
@@ -1172,8 +1212,8 @@ USRR20:
 </div>
 
 
-<div id="outline-container-org5fc0546" class="outline-4">
-<h4 id="org5fc0546"><span class="section-number-4">1.5.3</span> DSS 初始化流程</h4>
+<div id="outline-container-org8109f88" class="outline-4">
+<h4 id="org8109f88"><span class="section-number-4">1.5.3</span> DSS 初始化流程</h4>
 <div class="outline-text-4" id="text-1-5-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1195,8 +1235,14 @@ USRR20:
 <tbody>
 <tr>
 <td class="org-left">SRR_DSS_initTask</td>
-<td class="org-right">3</td>
+<td class="org-right">1</td>
 <td class="org-left">一次性初始化任务</td>
+</tr>
+
+<tr>
+<td class="org-left">SRR_DSS_mmWaveTask</td>
+<td class="org-right">2</td>
+<td class="org-left">监听 chirp 到来、帧开始、信箱事件</td>
 </tr>
 
 <tr>
@@ -1209,7 +1255,7 @@ USRR20:
 </div>
 
 <ol class="org-ol">
-<li><a id="org669750e"></a>dss_main 入口点<br />
+<li><a id="orgdb078b5"></a>dss_main 入口点<br />
 <div class="outline-text-5" id="text-1-5-3-1">
 <ol class="org-ol">
 <li>初始化全局变量 <code>gSrrDSSMCB</code></li>
@@ -1224,7 +1270,7 @@ USRR20:
 </div>
 </li>
 
-<li><a id="org1a2dafa"></a>SRR_DSS_initTask()<br />
+<li><a id="orgbe8ff5c"></a>SRR_DSS_initTask()<br />
 <div class="outline-text-5" id="text-1-5-3-2">
 <ol class="org-ol">
 <li>初始化 mmWave SDK 组件
@@ -1242,7 +1288,7 @@ USRR20:
 </div>
 </li>
 
-<li><a id="orga338703"></a>SRR_DSS_mmWaveTask<br />
+<li><a id="orgdffb742"></a>SRR_DSS_mmWaveTask<br />
 <div class="outline-text-5" id="text-1-5-3-3">
 <p>
 在死循环中判断是否是以下三个事件之一：
@@ -1304,6 +1350,14 @@ USRR20:
 </ol>
 </div>
 </li>
+
+<li><a id="org037967c"></a><span class="todo TODO">TODO</span> 搞清楚 EDMA 的几种类型 以及 radarcude(L3RAM)内存模型<br />
+<div class="outline-text-5" id="text-1-5-3-4">
+<ul class="org-ul">
+<li>State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-07-10 二 21:06]</span></span></li>
+</ul>
+</div>
+</li>
 </ol>
 </div>
 </div>
@@ -1333,7 +1387,7 @@ mmwave_sdk_user_guide.pdf(Document Version 1.0) P39
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: kristoffer</p>
-<p class="date">Created: 2018-07-08 日 21:50</p>
+<p class="date">Created: 2018-07-10 二 21:13</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
