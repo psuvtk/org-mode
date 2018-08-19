@@ -1,0 +1,20 @@
+#+TITLE: C#学习笔记
+
+
+** 编码规范
+1. 使用 PascalCase 或者 camelCase, 方法使用 PascalCase，本地变量使用 camelCase 且不包含下划线
+2. 入口点函数只能叫做 =Main()=
+3. =Program= is a good convention to follow when the class contains the =Main()= method
+4. 不同于 Java，C#中文件名称可以不同于类名，且一个文件可以包含多个类。
+5. 字符串差值 =$"my name is {first} {last}"=
+6. 对于 *硬编码* 数值，可以考虑将其放入配置文件中，这样可以避免在修改这些数值之后重新编译。
+7. checked{} unchecked{} 检查代码是否有溢出行为，比如 =int.MaxValue+1=, 通过命令行参数可以改变默认的检查行为
+8. 对于换行符，使用 =System.Enviroment.NewLine= 和 =System.Console.WriteLine()= 来对系统进行适配而不是 ='\n'=
+
+** 语法
+1. $"" 字符串插值， @"" 不转义\,换行,空格
+2. using :: 使用某种类型，比如 using System.Console
+   using static :: only for static methods and properties, not for instance members 允许访问类型的静态成员，而无需限定使用类型名称进行访问
+3. =out= 关键字，在 C#7.0 不需要提前声明该变量，在 if 和 else 子句中都可以使用该变量的值，但不能在 if 语句之外使用
+4. =int? count = null;= 给 *值类型* 赋值 null 时需要使用 null modifier ?
+5. var keyword ,for declaring an *implicitly typed local variable*; 创建匿名类型，C#7.0 中引入 *元组* 来替代匿名类型的使用

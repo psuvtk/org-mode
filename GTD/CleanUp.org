@@ -1,29 +1,51 @@
-#+AUTHOR Kristoffer Song
-#+EMAIL psuvtk@gmail.com
+#+TITLE: CleanUp
+#+AUTHOR: Kristoffer Song
+#+EMAIL: psuvtk@gmail.com
 #+STARTUP: showall
 #+STARTUP: indent
 #+STARTUP: hidestars
 
 * Archive
+** Work/Lab
+*** DONE ROS 机器人实验（毫米波）                             :lab:ARCHIVE:
+CLOSED: [2018-07-01 日 09:16] DEADLINE: <2018-06-30 六>
+- State "DONE"       from "DONE"       [2018-07-01 日 09:16] \\
+- State "TODO"       from              [2018-06-17 日 12:41]
+文档待后期再整理
+*** DONE 走廊人员追踪实验（毫米波）                           :lab:ARCHIVE:
+CLOSED: [2018-07-13 五 10:29] DEADLINE: <2018-07-07 六>
+- State "DONE"       from "TODO"       [2018-07-13 五 10:29] \\
+- State "TODO"       from              [2018-06-17 日 12:39]
+不够完善，需要调整参数使得范围达到 14m
+是不是因为多径效应导致信噪比降低？
+*** DONE 计算并调整中厅人员计数演示的雷达角度                     :ARCHIVE:
+CLOSED: [2018-07-16 一 13:53]
+- State "DONE"       from "TODO"       [2018-07-16 一 13:53]
+- State "TODO"       from "PENGDING"   [2018-07-16 一 11:23]
+- State "PENGDING"   from              [2018-07-16 一 11:23]
+*** DONE 报销发票                                                 :ARCHIVE:
+CLOSED: [2018-07-16 一 11:24]
+- State "DONE"       from "PENGDING"   [2018-07-16 一 11:24]
+- State "PENGDING"   from              [2018-07-16 一 11:13]
+工控机、开发板、USB 线材
 ** 2018 年
-
 *** DONE 帮 m&m 完善金融小程序 :ARCHIVE:
-    CLOSED: [2018-06-18 一 13:20] DEADLINE: <2018-06-18 一>
-    - State "DONE"       from "TODO"       [2018-06-18 一 13:20]
+CLOSED: [2018-06-18 一 13:20] DEADLINE: <2018-06-18 一>
+- State "DONE"       from "TODO"       [2018-06-18 一 13:20]
+- State "TODO"       from "PENGDING"   [2018-06-17 日 23:27]
+- State "PENGDING"   from              [2018-06-17 日 23:26]
 登录页面显示头像昵称；申请页面效果不正常
-    - State "TODO"       from "PENGDING"   [2018-06-17 日 23:27]
-    - State "PENGDING"   from              [2018-06-17 日 23:26]
 *** DONE 本科毕设论文                                    :personal:ARCHIVE:
-    CLOSED: [2018-06-19 二 18:51] DEADLINE: <2018-06-20 三>
-    - State "DONE"       from "TODO"       [2018-06-19 二 18:51]
+CLOSED: [2018-06-19 二 18:51] DEADLINE: <2018-06-20 三>
+- State "DONE"       from "TODO"       [2018-06-19 二 18:51]
+- State "TODO"       from "PENGDING"   [2018-06-17 日 22:09]
+- State "PENGDING"   from              [2018-06-17 日 21:24]
 题目: 基于毫米波雷达的机器人自主导航
 完善 软硬件环境搭建 章节
 中英文摘要、结论
 替换掉图片、legend 等大小要合适
 引用文献
 排版
-    - State "TODO"       from "PENGDING"   [2018-06-17 日 22:09]
-    - State "PENGDING"   from              [2018-06-17 日 21:24]
 *** DONE 根据导师意见，二次修改论文排版 :ARCHIVE:
 CLOSED: [2018-06-19 二 19:38] DEADLINE: <2018-06-19 二>
 - State "DONE"       from "TODO"       [2018-06-19 二 19:38]
@@ -35,16 +57,11 @@ CLOSED: [2018-06-29 五 16:40] DEADLINE: <2018-06-20 三>
 *** DONE 办理行李存放服务                                :personal:ARCHIVE:
 CLOSED: [2018-06-29 五 16:40]
 - State "DONE"       from "TODO"       [2018-06-29 五 16:40]
+- State "TODO"       from              [2018-06-20 三 20:25]
 迎新寝室粉刷(7 月 1 日～7 月 20 日)
 之后可以申请提前住宿
-- State "TODO"       from              [2018-06-20 三 20:25]
 时间：６月２７日下午 14：00～17：30
 地点：三公寓三楼自习室
-*** DONE 办理７月２０日之后提前住宿                      :personal:ARCHIVE:
-CLOSED: [2018-06-29 五 16:40]
-- State "DONE"       from "TODO"       [2018-06-29 五 16:40]
-- State "TODO"       from              [2018-06-20 三 20:27]
-需要提前至卡务中心办理一卡通延期手续
 *** DONE 办理７月２０日之后提前住宿                      :personal:ARCHIVE:
 CLOSED: [2018-06-29 五 16:40]
 - State "DONE"       from "TODO"       [2018-06-29 五 16:40]
@@ -62,53 +79,95 @@ CLOSED: [2018-06-29 五 16:40]
 *** DONE 办理行李存放服务                                :personal:ARCHIVE:
 CLOSED: [2018-06-29 五 16:40]
 - State "DONE"       from "TODO"       [2018-06-29 五 16:40]
+- State "TODO"       from              [2018-06-20 三 20:25]
 迎新寝室粉刷(7 月 1 日～7 月 20 日)
 之后可以申请提前住宿
-- State "TODO"       from              [2018-06-20 三 20:25]
 时间：６月２７日下午 14：00～17：30
 地点：三公寓三楼自习室
 *** DONE 收拾东西，准备搬宿舍                            :personal:ARCHIVE:
 CLOSED: [2018-06-29 五 16:39] DEADLINE: <2018-06-28 四>
 - State "PENGDING"   from              [2018-06-18 一 15:07]
-*** DONE ROS 机器人实验（毫米波）                             :lab:ARCHIVE:
-CLOSED: [2018-07-01 日 09:16] DEADLINE: <2018-06-30 六>
-- State "DONE"       from "DONE"       [2018-07-01 日 09:16] \\
-  文档待后期再整理
-- State "TODO"       from              [2018-06-17 日 12:41]
 *** DONE 拿去修电脑键盘                                          :personal:ARCHIVE:
 CLOSED: [2018-07-06 五 16:17] DEADLINE: <2018-07-07 六>
 - State "DONE"       from "TODO"       [2018-07-06 五 16:17] \\
-  花费 450 元
+- State "TODO"       from              [2018-06-29 五 16:43]
+花费 450 元
 等实验室台式机到了，拿去修键盘
 如果吹风机搞不好，需要大约 200 元更换新的键盘
-- State "TODO"       from              [2018-06-29 五 16:43]
-*** DONE 走廊人员追踪实验（毫米波）                                   :lab:ARCHIVE:
-CLOSED: [2018-07-13 五 10:29] DEADLINE: <2018-07-07 六>
-
-- State "DONE"       from "TODO"       [2018-07-13 五 10:29] \\
-  不够完善，需要调整参数使得范围达到 14m
-  是不是因为多径效应导致信噪比降低？
-- State "TODO"       from              [2018-06-17 日 12:39]
-*** DONE 报销发票                                                 :ARCHIVE:
-CLOSED: [2018-07-16 一 11:24]
-- State "DONE"       from "PENGDING"   [2018-07-16 一 11:24]
-工控机、开发板、USB 线材
-- State "PENGDING"   from              [2018-07-16 一 11:13]
 *** DONE 扫描证书并归档                                           :ARCHIVE:
 CLOSED: [2018-07-16 一 13:11]
 - State "DONE"       from "TODO"       [2018-07-16 一 13:11]
 - State "TODO"       from "PENGDING"   [2018-07-16 一 13:11]
 - State "PENGDING"   from              [2018-07-16 一 13:11]
-*** DONE 计算并调整中厅人员计数演示的雷达角度                     :ARCHIVE:
-CLOSED: [2018-07-16 一 13:53]
-- State "DONE"       from "TODO"       [2018-07-16 一 13:53]
-- State "TODO"       from "PENGDING"   [2018-07-16 一 11:23]
-- State "PENGDING"   from              [2018-07-16 一 11:23]
 *** DONE 给狗菲买零食                                             :ARCHIVE:
 CLOSED: [2018-07-16 一 21:51]
 - State "DONE"       from "TODO"       [2018-07-16 一 21:51]
 - State "TODO"       from "PENGDING"   [2018-07-16 一 13:10]
 - State "PENGDING"   from              [2018-07-16 一 11:24]
+*** DONE 寄快递回家                                               :ARCHIVE:
+CLOSED: [2018-07-18 三 10:40]
+- State "DONE"       from "TODO"       [2018-07-18 三 10:40]
+- State "TODO"       from "PENGDING"   [2018-07-18 三 10:40]
+- State "PENGDING"   from              [2018-07-16 一 11:21]
+内裤，剃须啫喱
+*** DONE 给叶子鹏打印、盖章政审表 :ARCHIVE:
+CLOSED: [2018-07-20 五 20:40]
+- State "DONE"       from "TODO"       [2018-07-20 五 20:40]
+- State "TODO"       from "PENGDING"   [2018-07-18 三 14:02]
+- State "PENGDING"   from              [2018-07-18 三 14:02]
+时间: <2018-07-20 19:30>
+*** DONE 搬宿舍到三公寓                                           :ARCHIVE:
+CLOSED: [2018-07-22 日 20:54] DEADLINE: <2018-07-31 二>
+- State "DONE"       from "TODO"       [2018-07-22 日 20:54]
+- State "TODO"       from "PENGDING"   [2018-07-18 三 10:43]
+- State "PENGDING"   from              [2018-07-18 三 10:42]
+时间: <2018-07-21>--<2018-07-31>
+*** DONE 新饭卡绑定银行卡                                         :ARCHIVE:
+CLOSED: [2018-07-23 一 11:03]
+- State "DONE"       from              [2018-07-23 一 11:03]
+*** DONE 给夏令营参观讲解毫米波雷达实验                           :ARCHIVE:
+CLOSED: [2018-07-30 一 13:38] DEADLINE: <2018-07-25 三>
+- State "DONE"       from "TODO"       [2018-07-30 一 13:38]
+- State "TODO"       from "PENGDING"   [2018-07-21 六 10:47]
+- State "PENGDING"   from              [2018-07-21 六 10:47]
+
+*** DONE 更换找回的书籍《Linux 设备驱动开发详解》                 :ARCHIVE:
+CLOSED: [2018-08-03 五 20:55]
+- State "DONE"       from "TODO"       [2018-08-03 五 20:55]
+- State "TODO"       from "PENGDING"   [2018-07-31 二 13:14]
+- State "PENGDING"   from              [2018-07-31 二 13:14]
+流程[3/3]
+- [X] 客服咨询
+- [X] 寄快递回出版社->不需要
+- [X] 取回更换的新书
+
+*** DONE 完成 AM335x 开发板程序                                   :ARCHIVE:
+CLOSED: [2018-08-16 四 20:33]
+- State "DONE"       from "TODO"       [2018-08-16 四 20:33]
+- State "TODO"       from "PENGDING"   [2018-08-01 三 19:15]
+- State "PENGDING"   from "TODO"       [2018-08-01 三 19:15]
+循序渐进 [9/9]
+- [X] 读取配置
+- [X] 控制串口
+- [X] 转发网口
+- [X] 编写串口模块测试
+- [X] 编写并测试网口
+- [X] 移植到 am335x 开发板上
+- [X] 在研究院进行整体测试
+- [X] 在褚岛进行整体测试
+- [X] 编写整理文档并归档
+*** DONE 写毫米波雷达的申请书                                     :ARCHIVE:
+CLOSED: [2018-08-16 四 20:35]
+- State "DONE"       from "TODO"       [2018-08-16 四 20:35]
+- State "TODO"       from              [2018-08-16 四 20:35]
+- State "TODO"       from "PENGDING"   [2018-08-05 日 22:29]
+- State "PENGDING"   from              [2018-08-05 日 22:29]
+关键词： 山东省自然基金，目标识别，姿态估计，点云
+*** TODO NVIDIA 自主机器人与深度强化 公开课直播                   :ARCHIVE:
+- State "TODO"       from "PENGDING"   [2018-07-18 三 14:13]
+- State "PENGDING"   from              [2018-07-18 三 14:12]
+CSDN
+时间: <2018-07-25 20:00-21:00>
 * Trash
 
 ** 2018 年
@@ -116,9 +175,13 @@ CLOSED: [2018-07-16 一 21:51]
 CLOSED: [2018-06-20 三 20:20] DEADLINE: <2018-06-28 四>
 - State "CANCELED"   from "PENGDING"   [2018-06-20 三 20:20]
 - State "PENGDING"   from              [2018-06-18 一 15:08]
-***
 *** CANCELED 整明白下位机的内存模型                           :lab:ARCHIVE:
 CLOSED: [2018-07-16 一 11:35] DEADLINE: <2018-07-20 五> SCHEDULED: <2018-07-13 五>
 - State "CANCELED"   from "TODO"       [2018-07-16 一 11:35]
 - State "TODO"       from              [2018-07-13 五 14:51]
 EDMA 做了什么？弄不明白这个就不用想自己写程序了
+*** CANCELED 商业计划书-无人驾驶                                  :ARCHIVE:
+CLOSED: [2018-07-18 三 10:38]
+- State "CANCELED"   from "PENGDING"   [2018-07-18 三 10:38] \\
+  冯翔已经完成
+- State "PENGDING"   from              [2018-07-10 二 21:03]

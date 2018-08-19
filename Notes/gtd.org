@@ -1,3 +1,9 @@
+#+TITLE:org-mode 与 GTD 时间管理
+#+AUTHOR: Kristoffer
+#+EMAIL: psuvtk@gmail.com
+#+STARTUP: showall
+
+
 * 阅读 David Allen 时间管理流程的一点笔记
 为什么有些事情总是萦绕在你的心头？
 1. 你还没有明确地认定他们的 *预期结果* 是什么；

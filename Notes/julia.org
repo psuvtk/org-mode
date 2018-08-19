@@ -1,0 +1,9 @@
+#+TITLE: Julia 笔记
+#+AUTHOR: Kristoffer
+#+EMAIL: psuvtk@gmail.com
+
+
+** Juno 使用
+快捷键：
+- =alt+Enter= 运行整个脚本
+- =shift+Enter= REPL 运行当前行

@@ -1,5 +1,6 @@
-#+AUTHOR Kristoffer Song
-#+EMAIL psuvtk@gmail.com
+#+TITLE: Collect
+#+AUTHOR: Kristoffer
+#+EMAIL: psuvtk@gmail.com
 #+STARTUP: showall
 #+STARTUP: hidestars
 #+STARTUP: indent
@@ -12,9 +13,20 @@
 *** PENGDING 毕业需要一片专利或者论文
 - State "PENGDING"   from              [2018-07-15 日 10:22]
 *** 阅读学习《视觉 SLAM 十四讲：从理论到实践》
-*** 购置单反相机
-尼康 D610
+*** 购置 [/]
+- [ ] BOSE QC35 II
+- [ ] 尼康 D610
+- [ ] Ipad 2018
 *** 学习德语
+*** 学习 Elixir
+*** 学习 Julia lang
+*** TODO [#A] 要改正的以及要养成的[/]
+- State "TODO"       from              [2018-07-19 四 21:37]
+- [ ] 不要有事没事打开 youtube 看视频
+- [ ] 使用 *番茄时钟* 约束自己的工作时间
+- [ ] 每天晚上看 1+ 个英语视频
+- [ ] 不要一整天都在看代码，学学设计模式，看看专业课书籍
+- [ ] 看论文，找方向
 ** New Stuff
 
 *** PENGDING 数据结构学习-优先队列 :personal:
@@ -23,11 +35,15 @@
     - State "PENGDING"   from              [2018-06-17 日 21:23]
 *** PENGDING UWB P440 实现机器人定位 :lab:
     - State "PENGDING"   from              [2018-06-17 日 21:24]
-*** PENGDING 商业计划书-无人驾驶
-- State "PENGDING"   from              [2018-07-10 二 21:03]
 *** PENGDING 整理冯翔留下的资料
 - State "PENGDING"   from              [2018-07-16 一 11:21]
-*** PENGDING 寄快递回家
-内裤，剃须啫喱
-- State "PENGDING"   from              [2018-07-16 一 11:21]
+*** 完善人员计数、走廊人员追踪实验
+*** 车载毫米波雷达实验
+时间: <2018-07-23>--<2018-08-05>
+*** 室外车辆定位追踪、摄像头
+时间: <2018-07-23>--<2018-08-05>
+*** 毫米波雷达程序流程
+*** 毫米波雷达处理算法
+*** 学习 matlab 信号处理工具箱
+*** 报销线材、交换机
 * Reference

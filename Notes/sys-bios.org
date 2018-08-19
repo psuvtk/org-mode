@@ -1,9 +1,11 @@
+#+TITLE: TI mmWaveRadar
+#+AUTHOR: Kristoffer
+#+EMAIL: psuvtk@gmail.com
 #+STARTUP: showeverything
 #+STARTUP: indent
 
 
 * SYS/BIOS
-
 
 ** IWR1642 笔记
 
@@ -11,7 +13,9 @@
 - MSS :: Master Subsystem
 - DSS :: DSP Subsystem
 - BSS :: RADAR Subsystem
+- BIST :: Build-in Self-Test
 - MCB :: Master Control Block
+- RHCP :: mmwaveRadar Host Communication Protocol
 - Control Path :: 指使用 mmWave API(mmWaveLink+Mailbox driver)实现对 BSS_Firmware 的控制，即：Radar Control --> mmWave Front End
 - Data Path :: 从雷达射频前段开始数据的处理流程
 

@@ -1,31 +1,56 @@
-#+AUTHOR Kristoffer Song
-#+EMAIL psuvtk@gmail.com
+#+TITLE: Actions
+#+AUTHOR: Kristoffer
+#+EMAIL: psuvtk@gmail.com
 #+STARTUP: indent
 #+STARTUP: showeverything
 #+STARTUP: hidestars
 
 ** Project
-*** TODO 去中国工商银行预约、预约兑换、兑换高铁币
+*** TODO 去中国农业银行预约、预约兑换、兑换高铁币
 SCHEDULED: <2018-07-16 一>
 - State "TODO"       from "PENGDING"   [2018-07-16 一 11:28]
 - State "PENGDING"   from              [2018-07-16 一 11:16]
-
-- [] 预约  <2018-07-19>--<2018-07-22>
-- [] 预约兑换 <2018-09-03>--<2018-09-12>
-- [] 兑换 <2018-08-18>--<2018-09-25>
-Note: 带上身份证
+流程 [1/3]
+- [X] 预约  <2018-07-19>--<2018-07-22>
+- [ ] 兑换 <2018-09-08 下午>
+地点: 高技术产业开发区支路营业部 威海市世昌大道附 272 号
+金额: 200 元
+兑换码: 233524276
+需要证件: 身份证
+网点电话: 0631-5252812
 
 *** TODO [#A] Ti mmWaveRadar 嵌入式程序相关                           :lab:
 SCHEDULED: <2018-07-16 一>
 - State "TODO"       from "PENGDING"   [2018-07-16 一 14:26]
 - State "PENGDING"   from              [2018-07-16 一 13:54]
-子任务:
-- [] MSS 工作流程、通信的方式并记录文档
-- [] CLI 命令接收，为什么第二次会出错
-- [] EDMA 的工作方式
-- [] 各个阶段实际的内存模型(与文档歧义的地方)，并使用 Visio 画出示意图
-- [] 各个阶段的算法(理论以及实现)
-- [] 思考哪些地方可以哪些地方无法修改，以实现自己的项目
+目标: 读懂并且能够修改代码，能够完成特定的应用
+下一步行动 [0/7]
+- [ ] MSS 工作流程、通信的方式并记录文档
+- [ ] CLI 命令接收，为什么第二次会出错
+- [ ] Data Path
+  + interChirpProcessing [1/2]
+    * [X] 1D-FFT
+    * [ ] ADCBUF 内存模型是什么样子的？跟手册描述是否一致？
+  + interFrameProcessing [2/9]
+    * [X] 2D-FFT
+    * [X] dopplerLineMask
+    * [ ] detObj2D, detObj2DRaw
+    * [ ] Peak Grouping
+    * [ ] DOA
+    * [ ] azimuthIn
+    * [ ] azimuthOut
+    * [ ] azimuthMagSqr
+    * [ ] detObj2dAzimuthIdx
+    * [ ] Clustering
+    * [ ] Tracking
+    * [ ] populateOutPuts
+    * [ ] enhance max-velosity using dissimilar chirps and chinese reminder thorem
+- [ ] EDMA 的工作方式 [0/0]
+  + [ ] sync A/AB 模式
+  + [ ] 通道
+  + [ ] shadow
+- [ ] 各个阶段实际的内存模型(与文档歧义的地方)，并使用 Visio 画出示意图 [0/0]
+- [ ] 思考哪些地方可以哪些地方无法修改，以实现自己的项目
 ** Agenda/Scheduled
 *** TODO 阅读无人驾驶开源项目并总结                                   :lab:
 DEADLINE: <2018-07-31 二>
@@ -40,6 +65,17 @@ DEADLINE: <2018-07-31 二>
 
 *** TODO 给尾号 5080 的银行卡开通工行信使服务
 - State "TODO"       from              [2018-07-17 二 09:36]
+*** TODO 购买往返动车票
+- State "TODO"       from "PENGDING"   [2018-07-30 一 13:51]
+- State "PENGDING"   from              [2018-07-30 一 13:42]
+往返 [3/4]
+- [X] 8 月 26 日威海北到高密的票
+- [X] 8 月 29 日高密到威海的票
+- [X] 8 月 29 日威海到威海北的票
+- [ ] 取票
+*** TODO 搭建基于 Ubuntu 16.04 的嵌入式开发环境
+- State "TODO"       from "PENGDING"   [2018-08-08 三 14:17]
+- State "PENGDING"   from              [2018-08-08 三 14:17]
 ** Waiting
 
 ** Someday
